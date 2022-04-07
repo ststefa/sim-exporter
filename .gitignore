@@ -1,0 +1,9 @@
+# go
+/vendor/
+
+# IntelliJ
+/.idea/
+/*.iml
+
+# build output
+/build/

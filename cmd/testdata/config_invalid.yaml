@@ -1,0 +1,30 @@
+metrics:
+  - name: linear
+    func: t+1
+    fuzzy: -1
+    lowerLimit: 100
+    upperLimit: 10
+  - name: quad
+    func: t*t
+    fuzzy: 5
+    lowerLimit: 0
+    upperLimit: 100
+  - name: quadplus
+    func: t*t+10
+    fuzzy: 5
+    lowerLimit: 0
+    upperLimit: 100
+instanceTypes:
+  - name: dbserver
+    metricRefs:
+    - ref: no-such-metric
+    - ref: quad
+  - name: webserver
+    metricRefs:
+    - ref: linear
+    - ref: no-such-metric
+fleet:
+  - kind: no-such-type
+    num: 2
+  - kind: webserver
+    num: -1
