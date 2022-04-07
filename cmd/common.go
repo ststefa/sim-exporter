@@ -1,7 +1,6 @@
 package cmd
 
 import (
-	"container/list"
 	"fmt"
 	"os"
 
@@ -17,23 +16,6 @@ import (
 */
 
 var (
-	// Defaults might be overridden at link time
-
-	// Default listening port
-	port = 9041
-
-	// Default config file name
-	configFile = "sim-exporter.yaml"
-
-	// Default URI path to metrics
-	metricsPath = "metrics"
-
-	// The proper version is automatically set to the contents of `version.txt` at link-time, see Makefile
-	version = "dev"
-
-	// Whether to enable debug output
-	debug = false
-
 	log = &logrus.Logger{
 		Out:       os.Stderr,
 		Formatter: new(logrus.TextFormatter),
@@ -95,57 +77,65 @@ func readAndValidateConfig(filename string) (Config, error) {
 	}
 	log.Debugf("yamlBytes from %v: %s\n", filename, yamlBytes)
 	err = yaml.Unmarshal(yamlBytes, &config)
-	log.Debugf("config: %s\n", yamlBytes)
+	log.Debugf("config: %v\n", config)
 	if err != nil {
 		return config, errors.Wrap(err, "Cannot parse config")
 	}
 
-	validationErrors := list.New()
+	var validationErrors []string
 	var metricNames []string
+
+	// Generate name slices for validation
 	for _, metric := range config.Metrics {
 		metricNames = append(metricNames, metric.Name)
 	}
 	var instanceTypeNames []string
 	for _, instanceType := range config.InstanceTypes {
-		metricNames = append(instanceTypeNames, instanceType.Name)
+		instanceTypeNames = append(instanceTypeNames, instanceType.Name)
 	}
 
+	// Validate metrics
+	if len(config.Metrics) == 0 {
+		validationErrors = append(validationErrors, "metrics must have one or more elements")
+	}
 	for _, metric := range config.Metrics {
 		if metric.Fuzzy < 0 {
-			validationErrors.PushBack(fmt.Sprintf("metric.%v: Fuzzy must be >= 0", metric.Name))
+			validationErrors = append(validationErrors, fmt.Sprintf("metrics.[name=%v].fuzzy: Must be >= 0", metric.Name))
 		}
 		if metric.LowerLimit >= metric.UpperLimit {
-			validationErrors.PushBack(fmt.Sprintf("metric.%v: lowerLimit must be smaller than upperLimit", metric.Name))
+			validationErrors = append(validationErrors, fmt.Sprintf("metrics.[name=%v].lowerLimit: Must be smaller than upperLimit", metric.Name))
 		}
 	}
-	// validate metric refs in instance_types
+	// Validate instanceTypes
+	if len(config.InstanceTypes) == 0 {
+		validationErrors = append(validationErrors, "instanceTypes must have one or more elements")
+	}
 	for _, instanceType := range config.InstanceTypes {
 		for _, metricRef := range instanceType.MetricRefs {
 			if isNotInSlice(metricRef.Ref, metricNames) {
-				validationErrors.PushBack(fmt.Sprintf("metricref.%v: Referencing non-existing metric %v", instanceType.Name, metricRef.Ref))
+				validationErrors = append(validationErrors, fmt.Sprintf("instanceTypes.[name=%v].metricrefs.[ref=%v]: Referencing non-existing metric name %v", instanceType.Name, metricRef.Ref, metricRef.Ref))
 			}
 		}
 	}
 
-	// validate kinds in fleet
+	// Validate fleet
+	if len(config.Fleet) == 0 {
+		validationErrors = append(validationErrors, "fleet must have one or more elements")
+	}
 	for _, fleetMember := range config.Fleet {
+		if fleetMember.Num < 0 {
+			validationErrors = append(validationErrors, fmt.Sprintf("fleet.[kind=%v].num: Must be >= 0", fleetMember.Kind))
+		}
 		if isNotInSlice(fleetMember.Kind, instanceTypeNames) {
-			validationErrors.PushBack(fmt.Sprintf("metricref.%v: Referencing non-existing instance type %v", fleetMember.Kind, fleetMember.Kind))
+			validationErrors = append(validationErrors, fmt.Sprintf("fleet.[kind=%v]: Referencing non-existing instance type %v", fleetMember.Kind, fleetMember.Kind))
 		}
 	}
-	//if valid.HasErrors() {
-	//	return config, errors.Errorf("%v", valid.Errors)
-	//}
-	if validationErrors.Len() > 0 {
+	if len(validationErrors) > 0 {
 		errorMessage := ""
-		for e := validationErrors.Front(); e != nil; e = e.Next() {
-			errorMessage += fmt.Sprint(e.Value) + ";"
+		for i := 0; i < len(validationErrors); i++ {
+			errorMessage += fmt.Sprintf("%v. %v", i+1, validationErrors[i]) + "; "
 		}
 		return config, &ValidationError{errorMessage}
 	}
 	return config, nil
-}
-
-func Execute() error {
-	return rootCmd.Execute()
 }

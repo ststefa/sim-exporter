@@ -1,16 +1,16 @@
 metrics:
   - name: linear
-    func: t+1
+    func: x+1
     fuzzy: -1
     lowerLimit: 100
     upperLimit: 10
   - name: quad
-    func: t*t
-    fuzzy: 5
+    func: x*x
+    fuzzy: 0
     lowerLimit: 0
     upperLimit: 100
   - name: quadplus
-    func: t*t+10
+    func: x*x+10
     fuzzy: 5
     lowerLimit: 0
     upperLimit: 100

@@ -6,7 +6,7 @@ metrics:
     upperLimit: 100
   - name: quad
     func: t*t
-    fuzzy: 5
+    fuzzy: 0
     lowerLimit: 0
     upperLimit: 100
   - name: quadplus

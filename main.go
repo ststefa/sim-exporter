@@ -1,9 +1,11 @@
 package main
 
 import (
-	"example.com/sim-exporter/cmd"
 	"fmt"
+	"os"
 	"reflect"
+
+	"example.com/sim-exporter/cmd"
 )
 
 func panicExit() {
@@ -15,4 +17,5 @@ func panicExit() {
 func main() {
 	defer panicExit()
 	cmd.Execute()
+	os.Exit(0)
 }

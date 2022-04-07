@@ -1,31 +1,33 @@
 package cmd
 
 import (
-	"container/list"
+	"fmt"
+	"os"
+
 	"github.com/spf13/cobra"
+	"gopkg.in/yaml.v3"
 )
 
+var checkCmd = &cobra.Command{
+	Use:   "check [simulation-file.yaml]",
+	Short: "Validate simulation configuration.",
+	Long:  "Validate the metric simulation configuration file.",
+	Args:  cobra.ExactArgs(1),
+	Run:   check,
+}
+
 func init() {
+	//.PersistentFlags().StringVar(&configFile, "config_file", configFile, "Configuration file to use")
 	rootCmd.AddCommand(checkCmd)
 }
 
 func check(cmd *cobra.Command, args []string) {
-	config, err := readAndValidateConfig(configFile)
+	config, err := readAndValidateConfig(args[0])
 	if err != nil {
-		log.Fatalf("Config problem: %v", err)
+		fmt.Fprintf(os.Stderr, "Config problem: %v", err)
+		os.Exit(1)
 	}
 
-	log.Debugf("config:\n%v\n", &config)
-
-	metricNames := list.New()
-	for _, value := range config.Metrics {
-		metricNames.PushFront(value.Name)
-	}
-}
-
-var checkCmd = &cobra.Command{
-	Use:   "check",
-	Short: "check simulation configuration",
-	Long:  "Check the metric simulation configuration file.",
-	Run:   check,
+	configBytes, _ := yaml.Marshal(config)
+	fmt.Printf(string(configBytes))
 }

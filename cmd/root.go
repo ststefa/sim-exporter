@@ -6,21 +6,27 @@ import (
 )
 
 var (
+	// Whether to enable debug output
+	debug = false
+
 	rootCmd = &cobra.Command{
 		Use:   "sim-exporter",
 		Short: "Export synthetic prometheus metrics",
-		Long:  "Produce synthetic metrics usable as a mock for prometheusscrape-testing.",
+		Long:  "Produce synthetic metrics usable as a mock for prometheus scrape-testing.",
 	}
 )
 
 func init() {
-	rootCmd.PersistentFlags().StringVar(&configFile, "config_file", configFile, "Configuration file to use")
 	rootCmd.PersistentFlags().BoolVar(&debug, "debug", debug, "Enable debug output")
 	// https://le-gall.bzh/post/go/integrating-logrus-with-cobra/
 	rootCmd.PersistentPreRunE = func(cmd *cobra.Command, args []string) error {
-		if debug == true {
+		if debug {
 			log.SetLevel(logrus.DebugLevel)
 		}
 		return nil
 	}
+}
+
+func Execute() error {
+	return rootCmd.Execute()
 }
