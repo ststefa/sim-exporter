@@ -1,0 +1,5 @@
+ Leading space
+trailing space 
+
+ both space 
+no space

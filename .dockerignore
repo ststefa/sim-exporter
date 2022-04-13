@@ -2,4 +2,3 @@
 # build outputs to be copied. This is a desirable behaviour for a local
 # multistage build setup but unfortunately not for ALM.
 .git/
-vendor/

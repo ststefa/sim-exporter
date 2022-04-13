@@ -1,0 +1,2650 @@
+version: "1"
+metrics:
+  collectd_cpu_count:
+    name: collectd_cpu_count
+    help: 'write_prometheus plugin: ''cpu'' Type: ''count'', Dstype: ''gauge'', Dsname:
+      ''value'''
+    type: gauge
+    labels:
+    - instance
+    items:
+    - value: "4"
+      labels:
+        instance: apume.heldenzeit.net
+  collectd_cpu_percent:
+    name: collectd_cpu_percent
+    help: 'write_prometheus plugin: ''cpu'' Type: ''percent'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - cpu
+    - instance
+    items:
+    - value: 77-92
+      labels:
+        cpu: idle
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        cpu: interrupt
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        cpu: nice
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        cpu: softirq
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        cpu: steal
+        instance: apume.heldenzeit.net
+    - value: 4-10
+      labels:
+        cpu: system
+        instance: apume.heldenzeit.net
+    - value: 6-10
+      labels:
+        cpu: user
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        cpu: wait
+        instance: apume.heldenzeit.net
+  collectd_df_df_complex:
+    name: collectd_df_df_complex
+    help: 'write_prometheus plugin: ''df'' Type: ''df_complex'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - df
+    - type
+    - instance
+    items:
+    - value: 2.000e+10-2.082e+10
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: free
+    - value: 5.284e+09-6.330e+09
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 6.310e+10-1.122e+11
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 3.674e+08-4.490e+08
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 1.606e+06-2.982e+06
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 1.037e+09-3.029e+09
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: used
+  collectd_df_df_inodes:
+    name: collectd_df_df_inodes
+    help: 'write_prometheus plugin: ''df'' Type: ''df_inodes'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - df
+    - type
+    - instance
+    items:
+    - value: 3.885e+06-9.748e+06
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 1.342e+05-3.722e+05
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 3.803e+05-6.205e+05
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 629-723
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 3.819e+05-6.100e+05
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 230-490
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: used
+  collectd_df_percent_bytes:
+    name: collectd_df_percent_bytes
+    help: 'write_prometheus plugin: ''df'' Type: ''percent_bytes'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - df
+    - type
+    - instance
+    items:
+    - value: 15-21
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: free
+    - value: 4-6
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 72-82
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 78-121
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 0-1
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 91-109
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: used
+  collectd_df_percent_inodes:
+    name: collectd_df_percent_inodes
+    help: 'write_prometheus plugin: ''df'' Type: ''percent_inodes'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - df
+    - type
+    - instance
+    items:
+    - value: 73-120
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: 2-5
+      labels:
+        df: sda1
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 51-149
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: "0"
+      labels:
+        df: tmpfs
+        instance: apume.heldenzeit.net
+        type: used
+    - value: 73-127
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: free
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: reserved
+    - value: "0"
+      labels:
+        df: udev
+        instance: apume.heldenzeit.net
+        type: used
+  collectd_disk_disk_io_time_io_time_total:
+    name: collectd_disk_disk_io_time_io_time_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_io_time'', Dstype: ''derive'',
+      Dsname: ''io_time'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: 9-23
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 1.405e+07-2.444e+07
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 1.776e+07-2.002e+07
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 20-36
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 4.039e+04-4.289e+04
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_io_time_weighted_io_time_total:
+    name: collectd_disk_disk_io_time_weighted_io_time_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_io_time'', Dstype: ''derive'',
+      Dsname: ''weighted_io_time'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "1"
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 1.840e+07-1.877e+07
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 1.462e+07-1.649e+07
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 14-24
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 4.098e+04-1.080e+05
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_merged_read_total:
+    name: collectd_disk_disk_merged_read_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_merged'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: 9.885e+04-1.546e+05
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 1.075e+05-1.368e+05
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 3483-5683
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_merged_write_total:
+    name: collectd_disk_disk_merged_write_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_merged'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: 7.900e+06-1.091e+07
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 8.328e+06-1.039e+07
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 4.500e+04-5.074e+04
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_octets_read_total:
+    name: collectd_disk_disk_octets_read_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_octets'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: 1.309e+04-2.378e+04
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 4.390e+10-4.662e+10
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 3.436e+10-5.605e+10
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 1044-3052
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 2.940e+07-7.560e+07
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_octets_write_total:
+    name: collectd_disk_disk_octets_write_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_octets'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "0"
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 1.283e+11-1.309e+11
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 1.189e+11-1.396e+11
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 3.405e+08-4.247e+08
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_ops_read_total:
+    name: collectd_disk_disk_ops_read_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_ops'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: 7-17
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 5.836e+05-8.226e+05
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 4.107e+05-9.816e+05
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 1-3
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 4477-9089
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_ops_write_total:
+    name: collectd_disk_disk_ops_write_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_ops'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "0"
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 4.399e+06-1.131e+07
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 5.672e+06-9.657e+06
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 2507-6953
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_time_read_total:
+    name: collectd_disk_disk_time_read_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_time'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "1"
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 1.772e+05-1.881e+05
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 1.748e+05-1.856e+05
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: 63-127
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 1.346e+04-3.640e+04
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_disk_time_write_total:
+    name: collectd_disk_disk_time_write_total
+    help: 'write_prometheus plugin: ''disk'' Type: ''disk_time'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "0"
+      labels:
+        disk: loop0
+        instance: apume.heldenzeit.net
+    - value: 7.662e+05-1.250e+06
+      labels:
+        disk: sda
+        instance: apume.heldenzeit.net
+    - value: 6.265e+05-1.362e+06
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        disk: sda2
+        instance: apume.heldenzeit.net
+    - value: 2.287e+04-2.685e+04
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_disk_pending_operations:
+    name: collectd_disk_pending_operations
+    help: 'write_prometheus plugin: ''disk'' Type: ''pending_operations'', Dstype:
+      ''gauge'', Dsname: ''value'''
+    type: gauge
+    labels:
+    - disk
+    - instance
+    items:
+    - value: "0"
+      labels:
+        disk: sda1
+        instance: apume.heldenzeit.net
+    - value: "0"
+      labels:
+        disk: sda5
+        instance: apume.heldenzeit.net
+  collectd_interface_if_dropped_rx_total:
+    name: collectd_interface_if_dropped_rx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_dropped'', Dstype: ''derive'',
+      Dsname: ''rx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: 328-378
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: 3.233e+05-8.315e+05
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_dropped_tx_total:
+    name: collectd_interface_if_dropped_tx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_dropped'', Dstype: ''derive'',
+      Dsname: ''tx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: 8.666e+04-2.228e+05
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_errors_rx_total:
+    name: collectd_interface_if_errors_rx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_errors'', Dstype: ''derive'',
+      Dsname: ''rx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_errors_tx_total:
+    name: collectd_interface_if_errors_tx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_errors'', Dstype: ''derive'',
+      Dsname: ''tx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_octets_rx_total:
+    name: collectd_interface_if_octets_rx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_octets'', Dstype: ''derive'',
+      Dsname: ''rx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: 2.432e+10-2.972e+10
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: 7.361e+10-1.059e+11
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: 4.957e+08-5.159e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: 1.753e+10-2.800e+10
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: 2.151e+09-3.741e+09
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: 2.994e+09-7.699e+09
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: 2.547e+09-3.590e+09
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: 3.106e+09-3.874e+09
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_octets_tx_total:
+    name: collectd_interface_if_octets_tx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_octets'', Dstype: ''derive'',
+      Dsname: ''tx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: 1.312e+11-2.789e+11
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: 3.114e+10-3.884e+10
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: 3.234e+07-5.506e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: 5.480e+08-7.414e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: 5726-8770
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: 2.209e+08-2.541e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: 2.185e+10-2.320e+10
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: 4.933e+08-1.025e+09
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: 2.035e+08-2.869e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_packets_rx_total:
+    name: collectd_interface_if_packets_rx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_packets'', Dstype: ''derive'',
+      Dsname: ''rx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: 2.872e+07-7.764e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: 6.018e+07-1.250e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: 4.295e+05-6.055e+05
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: 9.380e+06-2.670e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: 1.427e+06-3.329e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: 1.181e+07-1.772e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: 2.135e+06-4.536e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: 2.352e+06-3.182e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_interface_if_packets_tx_total:
+    name: collectd_interface_if_packets_tx_total
+    help: 'write_prometheus plugin: ''interface'' Type: ''if_packets'', Dstype: ''derive'',
+      Dsname: ''tx'''
+    type: counter
+    labels:
+    - interface
+    - instance
+    items:
+    - value: 1.683e+08-1.717e+08
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp1s0
+    - value: 5.214e+07-5.537e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp2s0
+    - value: 3.544e+05-6.729e+05
+      labels:
+        instance: apume.heldenzeit.net
+        interface: enp3s0
+    - value: 4.065e+06-5.070e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tbch
+    - value: 137-165
+      labels:
+        instance: apume.heldenzeit.net
+        interface: tun0
+    - value: 1.147e+06-2.178e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe2
+    - value: 1.388e+07-2.313e+07
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe3
+    - value: 1.335e+06-3.800e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wghe4
+    - value: 1.167e+06-2.369e+06
+      labels:
+        instance: apume.heldenzeit.net
+        interface: wgsb1
+  collectd_memory:
+    name: collectd_memory
+    help: 'write_prometheus plugin: ''memory'' Type: ''memory'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - memory
+    - instance
+    items:
+    - value: 2.303e+08-4.277e+08
+      labels:
+        instance: apume.heldenzeit.net
+        memory: buffered
+    - value: 1.624e+09-1.946e+09
+      labels:
+        instance: apume.heldenzeit.net
+        memory: cached
+    - value: 2.581e+08-2.633e+08
+      labels:
+        instance: apume.heldenzeit.net
+        memory: free
+    - value: 3.988e+08-8.673e+08
+      labels:
+        instance: apume.heldenzeit.net
+        memory: slab_recl
+    - value: 5.516e+07-8.628e+07
+      labels:
+        instance: apume.heldenzeit.net
+        memory: slab_unrecl
+    - value: 7.287e+08-1.324e+09
+      labels:
+        instance: apume.heldenzeit.net
+        memory: used
+  collectd_memory_percent:
+    name: collectd_memory_percent
+    help: 'write_prometheus plugin: ''memory'' Type: ''percent'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - memory
+    - instance
+    items:
+    - value: "8"
+      labels:
+        instance: apume.heldenzeit.net
+        memory: buffered
+    - value: 40-47
+      labels:
+        instance: apume.heldenzeit.net
+        memory: cached
+    - value: 6-7
+      labels:
+        instance: apume.heldenzeit.net
+        memory: free
+    - value: 14-17
+      labels:
+        instance: apume.heldenzeit.net
+        memory: slab_recl
+    - value: 1-2
+      labels:
+        instance: apume.heldenzeit.net
+        memory: slab_unrecl
+    - value: 19-31
+      labels:
+        instance: apume.heldenzeit.net
+        memory: used
+  collectd_processes_contextswitch_total:
+    name: collectd_processes_contextswitch_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''contextswitch'', Dstype:
+      ''derive'', Dsname: ''value'''
+    type: counter
+    labels:
+    - processes
+    - type
+    - instance
+    items:
+    - value: 5955-16099
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+        type: involuntary
+    - value: 5.641e+05-8.462e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+        type: voluntary
+    - value: 4.493e+05-5.719e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+        type: involuntary
+    - value: 3.973e+06-7.712e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+        type: voluntary
+    - value: 2.859e+05-7.353e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+        type: involuntary
+    - value: 5.434e+06-6.252e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+        type: voluntary
+    - value: 6.953e+04-2.031e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+        type: involuntary
+    - value: 4.519e+06-4.703e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+        type: voluntary
+    - value: 5.288e+05-8.099e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+        type: involuntary
+    - value: 2.117e+07-2.248e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+        type: voluntary
+    - value: 7.223e+04-1.312e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+        type: involuntary
+    - value: 5.192e+06-6.219e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+        type: voluntary
+    - value: 5-11
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+        type: involuntary
+    - value: 111-151
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+        type: voluntary
+    - value: 3.460e+05-6.569e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+        type: involuntary
+    - value: 2.108e+07-3.228e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+        type: voluntary
+    - value: 6.368e+06-7.628e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+        type: involuntary
+    - value: 2.864e+07-7.549e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+        type: voluntary
+  collectd_processes_disk_octets_read_total:
+    name: collectd_processes_disk_octets_read_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''disk_octets'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: "1.701e+07"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 3.114e+06-8.420e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: 2.186e+05-2.566e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 4.498e+06-7.036e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 1.212e+06-1.262e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: 8.165e+06-1.550e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 1.913e+06-3.797e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 8.139e+08-1.221e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 1.038e+10-1.463e+10
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_disk_octets_write_total:
+    name: collectd_processes_disk_octets_write_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''disk_octets'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 2.313e+07-6.759e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 6.170e+06-1.474e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 7.320e+06-1.359e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 2.273e+08-2.414e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 2744-5448
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 3.839e+08-8.957e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 1.806e+11-2.546e+11
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_file_handles:
+    name: collectd_processes_file_handles
+    help: 'write_prometheus plugin: ''processes'' Type: ''file_handles'', Dstype:
+      ''gauge'', Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - type
+    - instance
+    items:
+    - value: 244-462
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+        type: mapped
+    - value: 48-90
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+        type: mapped
+    - value: 68-70
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+        type: mapped
+    - value: 11-17
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+        type: mapped
+    - value: "9"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+        type: mapped
+    - value: 5-11
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+        type: mapped
+    - value: 72-80
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+        type: mapped
+    - value: 152-296
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+        type: mapped
+    - value: 2098-4356
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+        type: mapped
+    - value: 254-270
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+        type: mapped
+    - value: 143-305
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+        type: mapped
+    - value: 236-288
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+        type: mapped
+    - value: 108-298
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+        type: mapped
+    - value: 55-109
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+        type: mapped
+    - value: 109-181
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+        type: mapped
+    - value: 318-388
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+        type: mapped
+    - value: 381-955
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+        type: mapped
+  collectd_processes_fork_rate_total:
+    name: collectd_processes_fork_rate_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''fork_rate'', Dstype: ''derive'',
+      Dsname: ''value'''
+    type: counter
+    labels:
+    - instance
+    items:
+    - value: 5.700e+05-1.396e+06
+      labels:
+        instance: apume.heldenzeit.net
+  collectd_processes_io_octets_rx_total:
+    name: collectd_processes_io_octets_rx_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''io_octets'', Dstype: ''derive'',
+      Dsname: ''rx'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 9.706e+07-1.287e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 3.616e+07-5.900e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: 3.623e+10-7.191e+10
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 4.282e+07-5.234e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 5.935e+08-7.868e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: 6.697e+08-9.636e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 1.210e+09-2.457e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 1.094e+04-1.116e+04
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 8.782e+10-1.052e+11
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 1.988e+12-2.690e+12
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_io_octets_tx_total:
+    name: collectd_processes_io_octets_tx_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''io_octets'', Dstype: ''derive'',
+      Dsname: ''tx'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 1.350e+08-1.684e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 7.878e+07-8.534e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 6.565e+07-9.847e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 1.256e+10-3.484e+10
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: 8.156e+07-1.104e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 6298-7394
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 3359-4833
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 1.696e+09-1.912e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 1.381e+11-2.351e+11
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_io_ops_read_total:
+    name: collectd_processes_io_ops_read_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''io_ops'', Dstype: ''derive'',
+      Dsname: ''read'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 9.602e+04-2.469e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 5.140e+06-8.210e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: 8.055e+07-1.496e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 4.739e+06-8.611e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 4.463e+06-5.032e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: 1.410e+06-1.467e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 5.363e+06-6.048e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 12-24
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 3.167e+07-4.285e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 6.884e+08-1.011e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_io_ops_write_total:
+    name: collectd_processes_io_ops_write_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''io_ops'', Dstype: ''derive'',
+      Dsname: ''write'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 8.339e+04-1.515e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 3.458e+06-7.348e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: 4.431e+06-6.376e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: 1.415e+07-2.570e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: 4.991e+05-9.475e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: 12-24
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 5.383e+06-1.045e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 1.884e+08-2.041e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_code:
+    name: collectd_processes_ps_code
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_code'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 5.523e+07-6.750e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 8.952e+06-1.343e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 3.649e+06-7.083e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 9.064e+06-1.332e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 1.015e+07-1.692e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 4.802e+06-1.044e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 8.067e+06-1.027e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 9.483e+07-2.564e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 2.213e+08-3.056e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_count_processes:
+    name: collectd_processes_ps_count_processes
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_count'', Dstype: ''gauge'',
+      Dsname: ''processes'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 9-13
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 1-3
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: "2"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 2-4
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_count_threads:
+    name: collectd_processes_ps_count_threads
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_count'', Dstype: ''gauge'',
+      Dsname: ''threads'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: "21"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 13-15
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 12-14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 11-17
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 1-3
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 6-16
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 3-7
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 33-53
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 66-128
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_cputime_syst_total:
+    name: collectd_processes_ps_cputime_syst_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_cputime'', Dstype: ''derive'',
+      Dsname: ''syst'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 6.077e+07-8.393e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 4.577e+08-7.629e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 2.916e+09-8.089e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 4.333e+08-7.873e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 2.421e+09-2.785e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 7.003e+08-8.913e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 1.223e+09-1.298e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 2.850e+04-3.150e+04
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 1.438e+09-2.729e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 7.557e+10-7.865e+10
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_cputime_user_total:
+    name: collectd_processes_ps_cputime_user_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_cputime'', Dstype: ''derive'',
+      Dsname: ''user'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 1.593e+08-2.771e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 7.906e+08-1.501e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 2.053e+09-3.349e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 8.479e+08-1.444e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: "8.503e+08"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 1.521e+09-1.552e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 9.561e+08-1.856e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 3.840e+05-8.160e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 3.627e+09-4.090e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 6.862e+10-7.434e+10
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_data:
+    name: collectd_processes_ps_data
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_data'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 9.408e+07-1.411e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 1.201e+08-1.438e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 9.398e+07-1.325e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 9.634e+07-1.676e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 8.840e+05-1.795e+06
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 1.367e+08-2.538e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 4.442e+07-5.010e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 1.979e+08-3.757e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 5.443e+08-1.549e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_pagefaults_majflt_total:
+    name: collectd_processes_ps_pagefaults_majflt_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_pagefaults'', Dstype:
+      ''derive'', Dsname: ''majflt'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 740-1536
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 400-416
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 9-25
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 290-526
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 14-40
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 218-236
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 24-40
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 1842-2120
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 434-678
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_pagefaults_minflt_total:
+    name: collectd_processes_ps_pagefaults_minflt_total
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_pagefaults'', Dstype:
+      ''derive'', Dsname: ''minflt'''
+    type: counter
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 6.981e+04-1.069e+05
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 2930-8340
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 6.792e+04-7.358e+04
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 3381-7889
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 4586-13052
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 8718-12546
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 978-2030
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: 195-299
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 1.208e+07-2.345e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 3.028e+09-7.412e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_rss:
+    name: collectd_processes_ps_rss
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_rss'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 6.546e+07-1.492e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 4.649e+07-4.937e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 6.253e+06-1.360e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 2.540e+07-7.046e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 5.193e+06-1.156e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 2.326e+07-4.415e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 8.380e+06-1.367e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 6.476e+07-1.511e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: "4.549e+08"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_stacksize:
+    name: collectd_processes_ps_stacksize
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_stacksize'', Dstype:
+      ''gauge'', Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 1.347e+15-1.749e+15
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 1.393e+14-1.421e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 1.041e+14-1.773e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 1.309e+14-1.506e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 1.661e+14-3.968e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 7.600e+13-2.055e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 1.393e+14-1.421e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 2.561e+14-3.068e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 3.166e+14-5.277e+14
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_processes_ps_state:
+    name: collectd_processes_ps_state
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_state'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: blocked
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: paging
+    - value: "1"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: running
+    - value: 76-142
+      labels:
+        instance: apume.heldenzeit.net
+        processes: sleeping
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: stopped
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: zombies
+  collectd_processes_ps_vm:
+    name: collectd_processes_ps_vm
+    help: 'write_prometheus plugin: ''processes'' Type: ''ps_vm'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - processes
+    - instance
+    items:
+    - value: 1.682e+08-3.193e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: apache
+    - value: 1.012e+09-1.032e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bind
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: bitcoind
+    - value: 6.162e+08-1.371e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: collectd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-sidekiq
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: gitlab-unicorn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: grafana
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: lnd
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: motion
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: mysqld
+    - value: 5.826e+08-1.462e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: named
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-gateway
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: nym-mixnode
+    - value: 1.554e+07-3.084e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: openvpn
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: plex
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: postgres-server
+    - value: 8.803e+08-2.104e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: prometheus
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: puppet-server
+    - value: 6.895e+07-7.034e+07
+      labels:
+        instance: apume.heldenzeit.net
+        processes: redis-server
+    - value: "0"
+      labels:
+        instance: apume.heldenzeit.net
+        processes: snmpd
+    - value: 4.594e+08-4.781e+08
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-client
+    - value: 9.633e+08-1.676e+09
+      labels:
+        instance: apume.heldenzeit.net
+        processes: splunk-server
+  collectd_sensors_temperature:
+    name: collectd_sensors_temperature
+    help: 'write_prometheus plugin: ''sensors'' Type: ''temperature'', Dstype: ''gauge'',
+      Dsname: ''value'''
+    type: gauge
+    labels:
+    - sensors
+    - type
+    - instance
+    items:
+    - value: 59-64
+      labels:
+        instance: apume.heldenzeit.net
+        sensors: k10temp-pci-00c3
+        type: temp1

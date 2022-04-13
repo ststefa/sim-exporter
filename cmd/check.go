@@ -2,32 +2,33 @@ package cmd
 
 import (
 	"fmt"
-	"os"
 
 	"github.com/spf13/cobra"
-	"gopkg.in/yaml.v3"
 )
 
 var checkCmd = &cobra.Command{
-	Use:   "check [simulation-file.yaml]",
-	Short: "Validate simulation configuration.",
-	Long:  "Validate the metric simulation configuration file.",
+	Use:   "check <file.yaml>",
+	Short: "Validate simulation config in <file.yaml>",
+	Long:  "Validate the metric simulation configuration <file.yaml>",
 	Args:  cobra.ExactArgs(1),
-	Run:   check,
+	Run:   doCheck,
 }
 
 func init() {
-	//.PersistentFlags().StringVar(&configFile, "config_file", configFile, "Configuration file to use")
 	rootCmd.AddCommand(checkCmd)
 }
 
-func check(cmd *cobra.Command, args []string) {
-	config, err := readAndValidateConfig(args[0])
+// Any undesired but handled outcome is signaled by panicking with SimulationError
+func doCheck(cmd *cobra.Command, args []string) {
+	config, err := loadAndValidateConfiguration(args[0])
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Config problem: %v", err)
-		os.Exit(1)
+		panic(&SimulationError{err.Error()})
 	}
 
-	configBytes, _ := yaml.Marshal(config)
-	fmt.Printf(string(configBytes))
+	err = setupMetricsCollection(config)
+	if err != nil {
+		panic(&SimulationError{err.Error()})
+	}
+
+	fmt.Printf("%v validated successfully\n", args[0])
 }

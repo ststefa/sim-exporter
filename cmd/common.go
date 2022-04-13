@@ -1,59 +1,13 @@
 package cmd
 
-import (
-	"fmt"
-	"os"
+import "regexp"
 
-	"github.com/pkg/errors"
-	"github.com/sirupsen/logrus"
-	"gopkg.in/yaml.v2"
-)
-
-/*
-	To avoid confusion (or until I have a better understanding of go scoping)
-	I decided to put anything which is shared between multiple files in  a
-	directory/package into this here `common.go`
-*/
-
-var (
-	log = &logrus.Logger{
-		Out:       os.Stderr,
-		Formatter: new(logrus.TextFormatter),
-		Hooks:     make(logrus.LevelHooks),
-		Level:     logrus.InfoLevel,
-	}
-)
-
-// Metric Main configuration struct
-type Metric struct {
-	Name       string `yaml:"name"`
-	Func       string `yaml:"func"`
-	Fuzzy      int64  `yaml:"fuzzy"`
-	LowerLimit int64  `yaml:"lowerLimit"`
-	UpperLimit int64  `yaml:"upperLimit"`
-}
-type MetricRef struct {
-	Ref string `yaml:"ref"`
-}
-type InstanceType struct {
-	Name       string      `yaml:"name"`
-	MetricRefs []MetricRef `yaml:"metricRefs"`
-}
-type Fleet struct {
-	Kind string `yaml:"kind"`
-	Num  int64  `yaml:"num"`
-}
-type Config struct {
-	Metrics       []Metric       `yaml:"metrics"`
-	InstanceTypes []InstanceType `yaml:"instanceTypes"`
-	Fleet         []Fleet        `yaml:"fleet"`
-}
-
-type ValidationError struct {
+// Used to indicate handled failure
+type SimulationError struct {
 	err string
 }
 
-func (e *ValidationError) Error() string {
+func (e *SimulationError) Error() string {
 	return e.err
 }
 
@@ -69,73 +23,39 @@ func isNotInSlice(searchString string, slice []string) bool {
 	return !isInSlice(searchString, slice)
 }
 
-func readAndValidateConfig(filename string) (Config, error) {
-	var config Config
-	yamlBytes, err := os.ReadFile(filename)
-	if err != nil {
-		return config, errors.Wrap(err, "Cannot read config")
-	}
-	log.Debugf("yamlBytes from %v: %s\n", filename, yamlBytes)
-	err = yaml.Unmarshal(yamlBytes, &config)
-	log.Debugf("config: %v\n", config)
-	if err != nil {
-		return config, errors.Wrap(err, "Cannot parse config")
-	}
+// Create a dictionary from regex capture groups
+func createMatchMap(regexp *regexp.Regexp, line *string) map[string]string {
 
-	var validationErrors []string
-	var metricNames []string
+	valueList := regexp.FindStringSubmatch(*line)
+	result := make(map[string]string)
 
-	// Generate name slices for validation
-	for _, metric := range config.Metrics {
-		metricNames = append(metricNames, metric.Name)
-	}
-	var instanceTypeNames []string
-	for _, instanceType := range config.InstanceTypes {
-		instanceTypeNames = append(instanceTypeNames, instanceType.Name)
-	}
-
-	// Validate metrics
-	if len(config.Metrics) == 0 {
-		validationErrors = append(validationErrors, "metrics must have one or more elements")
-	}
-	for _, metric := range config.Metrics {
-		if metric.Fuzzy < 0 {
-			validationErrors = append(validationErrors, fmt.Sprintf("metrics.[name=%v].fuzzy: Must be >= 0", metric.Name))
-		}
-		if metric.LowerLimit >= metric.UpperLimit {
-			validationErrors = append(validationErrors, fmt.Sprintf("metrics.[name=%v].lowerLimit: Must be smaller than upperLimit", metric.Name))
-		}
-	}
-	// Validate instanceTypes
-	if len(config.InstanceTypes) == 0 {
-		validationErrors = append(validationErrors, "instanceTypes must have one or more elements")
-	}
-	for _, instanceType := range config.InstanceTypes {
-		for _, metricRef := range instanceType.MetricRefs {
-			if isNotInSlice(metricRef.Ref, metricNames) {
-				validationErrors = append(validationErrors, fmt.Sprintf("instanceTypes.[name=%v].metricrefs.[ref=%v]: Referencing non-existing metric name %v", instanceType.Name, metricRef.Ref, metricRef.Ref))
+	if len(valueList) > 0 {
+		for i, name := range regexp.SubexpNames() {
+			if i != 0 && name != "" {
+				result[name] = valueList[i]
 			}
 		}
 	}
-
-	// Validate fleet
-	if len(config.Fleet) == 0 {
-		validationErrors = append(validationErrors, "fleet must have one or more elements")
-	}
-	for _, fleetMember := range config.Fleet {
-		if fleetMember.Num < 0 {
-			validationErrors = append(validationErrors, fmt.Sprintf("fleet.[kind=%v].num: Must be >= 0", fleetMember.Kind))
-		}
-		if isNotInSlice(fleetMember.Kind, instanceTypeNames) {
-			validationErrors = append(validationErrors, fmt.Sprintf("fleet.[kind=%v]: Referencing non-existing instance type %v", fleetMember.Kind, fleetMember.Kind))
-		}
-	}
-	if len(validationErrors) > 0 {
-		errorMessage := ""
-		for i := 0; i < len(validationErrors); i++ {
-			errorMessage += fmt.Sprintf("%v. %v", i+1, validationErrors[i]) + "; "
-		}
-		return config, &ValidationError{errorMessage}
-	}
-	return config, nil
+	return result
 }
+
+// based on https://gist.github.com/lelandbatey/a5c957b537bed39d1d6fb202c3b8de06
+//func setField(item interface{}, fieldName string, value interface{}) error {
+//	v := reflect.ValueOf(item).Elem()
+//	if !v.CanAddr() {
+//		return fmt.Errorf("cannot assign to the item passed, item must be a pointer in order to assign")
+//	}
+//	fieldNames := map[string]int{}
+//	for i := 0; i < v.NumField(); i++ {
+//		typeField := v.Type().Field(i)
+//		fieldNames[typeField.Name] = i
+//	}
+//
+//	fieldNum, ok := fieldNames[fieldName]
+//	if !ok {
+//		return fmt.Errorf("field %s does not exist within the provided item", fieldName)
+//	}
+//	fieldVal := v.Field(fieldNum)
+//	fieldVal.Set(reflect.ValueOf(value))
+//	return nil
+//}
