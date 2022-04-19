@@ -1,6 +1,6 @@
 variables:
   # General ALM debugging, causes "set -x" behaviour in ALM shell scripts
-  #ALM_DEBUG: "true"
+  ALM_DEBUG: "true"
 
   # Default: "make --trace". We need to specify a target because the default
   # target is meant for local development
@@ -36,16 +36,16 @@ include:
   file: '.go-docker.yml'
 
 # Analyze package-and-publish phase
-#docker-debug:
-#  stage: package-and-publish
-#
-#  extends: .base-job
-#
-#  script:
-#    - "env"
-#    - "echo pwd:$(pwd)"
-#    - "ls -la /"
-#    - "find /build* -type f"
-#    - "cd /builds/operations-center/operationscenter-observability/observability-cli"
-#    - "ls -la"
-#    - "find build -ls"
+docker-debug:
+  stage: package-and-publish
+
+  extends: .base-job
+
+  script:
+    - "env"
+    - "echo pwd:$(pwd)"
+    - "ls -la /"
+    - "find /build* -type f"
+    - "cd /builds/operations-center/operationscenter-observability/observability-cli"
+    - "ls -la"
+    - "find build -ls"
