@@ -1,0 +1,633 @@
+# HELP collectd_cpu_count write_prometheus plugin: 'cpu' Type: 'count', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_cpu_count gauge
+collectd_cpu_count{instance="apume.heldenzeit.net"} 4 1649759597692
+# HELP collectd_cpu_percent write_prometheus plugin: 'cpu' Type: 'percent', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_cpu_percent gauge
+collectd_cpu_percent{cpu="idle",instance="apume.heldenzeit.net"} 84.2914775592537 1649759597692
+collectd_cpu_percent{cpu="interrupt",instance="apume.heldenzeit.net"} 0 1649759597692
+collectd_cpu_percent{cpu="nice",instance="apume.heldenzeit.net"} 0 1649759597692
+collectd_cpu_percent{cpu="softirq",instance="apume.heldenzeit.net"} 0.252143217347453 1649759597692
+collectd_cpu_percent{cpu="steal",instance="apume.heldenzeit.net"} 0 1649759597692
+collectd_cpu_percent{cpu="system",instance="apume.heldenzeit.net"} 7.18608169440242 1649759597692
+collectd_cpu_percent{cpu="user",instance="apume.heldenzeit.net"} 8.21986888552698 1649759597692
+collectd_cpu_percent{cpu="wait",instance="apume.heldenzeit.net"} 0.0504286434694907 1649759597692
+# HELP collectd_df_df_complex write_prometheus plugin: 'df' Type: 'df_complex', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_df_df_complex gauge
+collectd_df_df_complex{df="sda1",type="free",instance="apume.heldenzeit.net"} 20410122240 1649759599489
+collectd_df_df_complex{df="sda1",type="reserved",instance="apume.heldenzeit.net"} 5806907392 1649759599489
+collectd_df_df_complex{df="sda1",type="used",instance="apume.heldenzeit.net"} 87633985536 1649759599489
+collectd_df_df_complex{df="tmpfs",type="free",instance="apume.heldenzeit.net"} 408186880 1649759599489
+collectd_df_df_complex{df="tmpfs",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_df_complex{df="tmpfs",type="used",instance="apume.heldenzeit.net"} 2293760 1649759599489
+collectd_df_df_complex{df="udev",type="free",instance="apume.heldenzeit.net"} 2032959488 1649759599488
+collectd_df_df_complex{df="udev",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599488
+collectd_df_df_complex{df="udev",type="used",instance="apume.heldenzeit.net"} 0 1649759599489
+# HELP collectd_df_df_inodes write_prometheus plugin: 'df' Type: 'df_inodes', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_df_df_inodes gauge
+collectd_df_df_inodes{df="sda1",type="free",instance="apume.heldenzeit.net"} 6816528 1649759599489
+collectd_df_df_inodes{df="sda1",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_df_inodes{df="sda1",type="used",instance="apume.heldenzeit.net"} 253168 1649759599489
+collectd_df_df_inodes{df="tmpfs",type="free",instance="apume.heldenzeit.net"} 500397 1649759599489
+collectd_df_df_inodes{df="tmpfs",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_df_inodes{df="tmpfs",type="used",instance="apume.heldenzeit.net"} 676 1649759599489
+collectd_df_df_inodes{df="udev",type="free",instance="apume.heldenzeit.net"} 495968 1649759599489
+collectd_df_df_inodes{df="udev",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_df_inodes{df="udev",type="used",instance="apume.heldenzeit.net"} 360 1649759599489
+# HELP collectd_df_percent_bytes write_prometheus plugin: 'df' Type: 'percent_bytes', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_df_percent_bytes gauge
+collectd_df_percent_bytes{df="sda1",type="free",instance="apume.heldenzeit.net"} 17.9270439147949 1649759599489
+collectd_df_percent_bytes{df="sda1",type="reserved",instance="apume.heldenzeit.net"} 5.10044384002686 1649759599489
+collectd_df_percent_bytes{df="sda1",type="used",instance="apume.heldenzeit.net"} 76.9725112915039 1649759599489
+collectd_df_percent_bytes{df="tmpfs",type="free",instance="apume.heldenzeit.net"} 99.4412002563477 1649759599489
+collectd_df_percent_bytes{df="tmpfs",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_percent_bytes{df="tmpfs",type="used",instance="apume.heldenzeit.net"} 0.558798551559448 1649759599489
+collectd_df_percent_bytes{df="udev",type="free",instance="apume.heldenzeit.net"} 100 1649759599489
+collectd_df_percent_bytes{df="udev",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_percent_bytes{df="udev",type="used",instance="apume.heldenzeit.net"} 0 1649759599489
+# HELP collectd_df_percent_inodes write_prometheus plugin: 'df' Type: 'percent_inodes', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_df_percent_inodes gauge
+collectd_df_percent_inodes{df="sda1",type="free",instance="apume.heldenzeit.net"} 96.4189682006836 1649759599489
+collectd_df_percent_inodes{df="sda1",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_percent_inodes{df="sda1",type="used",instance="apume.heldenzeit.net"} 3.58103108406067 1649759599489
+collectd_df_percent_inodes{df="tmpfs",type="free",instance="apume.heldenzeit.net"} 99.8650894165039 1649759599489
+collectd_df_percent_inodes{df="tmpfs",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_percent_inodes{df="tmpfs",type="used",instance="apume.heldenzeit.net"} 0.134910479187965 1649759599489
+collectd_df_percent_inodes{df="udev",type="free",instance="apume.heldenzeit.net"} 99.9274673461914 1649759599489
+collectd_df_percent_inodes{df="udev",type="reserved",instance="apume.heldenzeit.net"} 0 1649759599489
+collectd_df_percent_inodes{df="udev",type="used",instance="apume.heldenzeit.net"} 0.0725326836109161 1649759599489
+# HELP collectd_disk_disk_io_time_io_time_total write_prometheus plugin: 'disk' Type: 'disk_io_time', Dstype: 'derive', Dsname: 'io_time'
+# TYPE collectd_disk_disk_io_time_io_time_total counter
+collectd_disk_disk_io_time_io_time_total{disk="loop0",instance="apume.heldenzeit.net"} 16 1649759597731
+collectd_disk_disk_io_time_io_time_total{disk="sda",instance="apume.heldenzeit.net"} 19247724 1649759597730
+collectd_disk_disk_io_time_io_time_total{disk="sda1",instance="apume.heldenzeit.net"} 18890156 1649759597731
+collectd_disk_disk_io_time_io_time_total{disk="sda2",instance="apume.heldenzeit.net"} 28 1649759597731
+collectd_disk_disk_io_time_io_time_total{disk="sda5",instance="apume.heldenzeit.net"} 41644 1649759597731
+# HELP collectd_disk_disk_io_time_weighted_io_time_total write_prometheus plugin: 'disk' Type: 'disk_io_time', Dstype: 'derive', Dsname: 'weighted_io_time'
+# TYPE collectd_disk_disk_io_time_weighted_io_time_total counter
+collectd_disk_disk_io_time_weighted_io_time_total{disk="loop0",instance="apume.heldenzeit.net"} 1 1649759597731
+collectd_disk_disk_io_time_weighted_io_time_total{disk="sda",instance="apume.heldenzeit.net"} 18582362 1649759597730
+collectd_disk_disk_io_time_weighted_io_time_total{disk="sda1",instance="apume.heldenzeit.net"} 15554671 1649759597731
+collectd_disk_disk_io_time_weighted_io_time_total{disk="sda2",instance="apume.heldenzeit.net"} 19 1649759597731
+collectd_disk_disk_io_time_weighted_io_time_total{disk="sda5",instance="apume.heldenzeit.net"} 74509 1649759597731
+# HELP collectd_disk_disk_merged_read_total write_prometheus plugin: 'disk' Type: 'disk_merged', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_disk_disk_merged_read_total counter
+collectd_disk_disk_merged_read_total{disk="sda",instance="apume.heldenzeit.net"} 126736 1649759597730
+collectd_disk_disk_merged_read_total{disk="sda1",instance="apume.heldenzeit.net"} 122153 1649759597731
+collectd_disk_disk_merged_read_total{disk="sda5",instance="apume.heldenzeit.net"} 4583 1649759597731
+# HELP collectd_disk_disk_merged_write_total write_prometheus plugin: 'disk' Type: 'disk_merged', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_disk_disk_merged_write_total counter
+collectd_disk_disk_merged_write_total{disk="sda",instance="apume.heldenzeit.net"} 9405257 1649759597730
+collectd_disk_disk_merged_write_total{disk="sda1",instance="apume.heldenzeit.net"} 9357386 1649759597731
+collectd_disk_disk_merged_write_total{disk="sda5",instance="apume.heldenzeit.net"} 47871 1649759597731
+# HELP collectd_disk_disk_octets_read_total write_prometheus plugin: 'disk' Type: 'disk_octets', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_disk_disk_octets_read_total counter
+collectd_disk_disk_octets_read_total{disk="loop0",instance="apume.heldenzeit.net"} 18432 1649759597731
+collectd_disk_disk_octets_read_total{disk="sda",instance="apume.heldenzeit.net"} 45259591680 1649759597730
+collectd_disk_disk_octets_read_total{disk="sda1",instance="apume.heldenzeit.net"} 45204145152 1649759597731
+collectd_disk_disk_octets_read_total{disk="sda2",instance="apume.heldenzeit.net"} 2048 1649759597731
+collectd_disk_disk_octets_read_total{disk="sda5",instance="apume.heldenzeit.net"} 52502528 1649759597731
+# HELP collectd_disk_disk_octets_write_total write_prometheus plugin: 'disk' Type: 'disk_octets', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_disk_disk_octets_write_total counter
+collectd_disk_disk_octets_write_total{disk="loop0",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_octets_write_total{disk="sda",instance="apume.heldenzeit.net"} 129607888896 1649759597730
+collectd_disk_disk_octets_write_total{disk="sda1",instance="apume.heldenzeit.net"} 129225318400 1649759597731
+collectd_disk_disk_octets_write_total{disk="sda2",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_octets_write_total{disk="sda5",instance="apume.heldenzeit.net"} 382570496 1649759597731
+# HELP collectd_disk_disk_ops_read_total write_prometheus plugin: 'disk' Type: 'disk_ops', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_disk_disk_ops_read_total counter
+collectd_disk_disk_ops_read_total{disk="loop0",instance="apume.heldenzeit.net"} 12 1649759597731
+collectd_disk_disk_ops_read_total{disk="sda",instance="apume.heldenzeit.net"} 703106 1649759597730
+collectd_disk_disk_ops_read_total{disk="sda1",instance="apume.heldenzeit.net"} 696163 1649759597731
+collectd_disk_disk_ops_read_total{disk="sda2",instance="apume.heldenzeit.net"} 2 1649759597731
+collectd_disk_disk_ops_read_total{disk="sda5",instance="apume.heldenzeit.net"} 6783 1649759597731
+# HELP collectd_disk_disk_ops_write_total write_prometheus plugin: 'disk' Type: 'disk_ops', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_disk_disk_ops_write_total counter
+collectd_disk_disk_ops_write_total{disk="loop0",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_ops_write_total{disk="sda",instance="apume.heldenzeit.net"} 7854678 1649759597730
+collectd_disk_disk_ops_write_total{disk="sda1",instance="apume.heldenzeit.net"} 7664594 1649759597731
+collectd_disk_disk_ops_write_total{disk="sda2",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_ops_write_total{disk="sda5",instance="apume.heldenzeit.net"} 4730 1649759597731
+# HELP collectd_disk_disk_time_read_total write_prometheus plugin: 'disk' Type: 'disk_time', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_disk_disk_time_read_total counter
+collectd_disk_disk_time_read_total{disk="loop0",instance="apume.heldenzeit.net"} 1 1649759597731
+collectd_disk_disk_time_read_total{disk="sda",instance="apume.heldenzeit.net"} 182639 1649759597730
+collectd_disk_disk_time_read_total{disk="sda1",instance="apume.heldenzeit.net"} 180192 1649759597731
+collectd_disk_disk_time_read_total{disk="sda2",instance="apume.heldenzeit.net"} 95 1649759597731
+collectd_disk_disk_time_read_total{disk="sda5",instance="apume.heldenzeit.net"} 24934 1649759597731
+# HELP collectd_disk_disk_time_write_total write_prometheus plugin: 'disk' Type: 'disk_time', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_disk_disk_time_write_total counter
+collectd_disk_disk_time_write_total{disk="loop0",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_time_write_total{disk="sda",instance="apume.heldenzeit.net"} 1008209 1649759597730
+collectd_disk_disk_time_write_total{disk="sda1",instance="apume.heldenzeit.net"} 994385 1649759597731
+collectd_disk_disk_time_write_total{disk="sda2",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_disk_time_write_total{disk="sda5",instance="apume.heldenzeit.net"} 24862 1649759597731
+# HELP collectd_disk_pending_operations write_prometheus plugin: 'disk' Type: 'pending_operations', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_disk_pending_operations gauge
+collectd_disk_pending_operations{disk="sda1",instance="apume.heldenzeit.net"} 0 1649759597731
+collectd_disk_pending_operations{disk="sda5",instance="apume.heldenzeit.net"} 0 1649759597731
+# HELP collectd_interface_if_dropped_rx_total write_prometheus plugin: 'interface' Type: 'if_dropped', Dstype: 'derive', Dsname: 'rx'
+# TYPE collectd_interface_if_dropped_rx_total counter
+collectd_interface_if_dropped_rx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 353 1649759597741
+collectd_interface_if_dropped_rx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 577400 1649759597741
+collectd_interface_if_dropped_rx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="tbch",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="wghe2",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="wghe3",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="wghe4",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_rx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 0 1649759597741
+# HELP collectd_interface_if_dropped_tx_total write_prometheus plugin: 'interface' Type: 'if_dropped', Dstype: 'derive', Dsname: 'tx'
+# TYPE collectd_interface_if_dropped_tx_total counter
+collectd_interface_if_dropped_tx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="tbch",instance="apume.heldenzeit.net"} 154751 1649759597741
+collectd_interface_if_dropped_tx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="wghe2",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="wghe3",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="wghe4",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_dropped_tx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 0 1649759597741
+# HELP collectd_interface_if_errors_rx_total write_prometheus plugin: 'interface' Type: 'if_errors', Dstype: 'derive', Dsname: 'rx'
+# TYPE collectd_interface_if_errors_rx_total counter
+collectd_interface_if_errors_rx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="tbch",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="wghe2",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="wghe3",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="wghe4",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_rx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 0 1649759597741
+# HELP collectd_interface_if_errors_tx_total write_prometheus plugin: 'interface' Type: 'if_errors', Dstype: 'derive', Dsname: 'tx'
+# TYPE collectd_interface_if_errors_tx_total counter
+collectd_interface_if_errors_tx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="tbch",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="wghe2",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="wghe3",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="wghe4",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_errors_tx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 0 1649759597741
+# HELP collectd_interface_if_octets_rx_total write_prometheus plugin: 'interface' Type: 'if_octets', Dstype: 'derive', Dsname: 'rx'
+# TYPE collectd_interface_if_octets_rx_total counter
+collectd_interface_if_octets_rx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 27017377541 1649759597741
+collectd_interface_if_octets_rx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 89771329430 1649759597741
+collectd_interface_if_octets_rx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 505804531 1649759597741
+collectd_interface_if_octets_rx_total{interface="tbch",instance="apume.heldenzeit.net"} 22766313503 1649759597741
+collectd_interface_if_octets_rx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_octets_rx_total{interface="wghe2",instance="apume.heldenzeit.net"} 2945945424 1649759597741
+collectd_interface_if_octets_rx_total{interface="wghe3",instance="apume.heldenzeit.net"} 5346421752 1649759597741
+collectd_interface_if_octets_rx_total{interface="wghe4",instance="apume.heldenzeit.net"} 3068392428 1649759597741
+collectd_interface_if_octets_rx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 3490314356 1649759597741
+# HELP collectd_interface_if_octets_tx_total write_prometheus plugin: 'interface' Type: 'if_octets', Dstype: 'derive', Dsname: 'tx'
+# TYPE collectd_interface_if_octets_tx_total counter
+collectd_interface_if_octets_tx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 205069058892 1649759597741
+collectd_interface_if_octets_tx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 34990642055 1649759597741
+collectd_interface_if_octets_tx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 43696144 1649759597741
+collectd_interface_if_octets_tx_total{interface="tbch",instance="apume.heldenzeit.net"} 644712040 1649759597741
+collectd_interface_if_octets_tx_total{interface="tun0",instance="apume.heldenzeit.net"} 7248 1649759597741
+collectd_interface_if_octets_tx_total{interface="wghe2",instance="apume.heldenzeit.net"} 237480912 1649759597741
+collectd_interface_if_octets_tx_total{interface="wghe3",instance="apume.heldenzeit.net"} 22524299464 1649759597741
+collectd_interface_if_octets_tx_total{interface="wghe4",instance="apume.heldenzeit.net"} 758951100 1649759597741
+collectd_interface_if_octets_tx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 245191116 1649759597741
+# HELP collectd_interface_if_packets_rx_total write_prometheus plugin: 'interface' Type: 'if_packets', Dstype: 'derive', Dsname: 'rx'
+# TYPE collectd_interface_if_packets_rx_total counter
+collectd_interface_if_packets_rx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 53176485 1649759597741
+collectd_interface_if_packets_rx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 92584117 1649759597741
+collectd_interface_if_packets_rx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 517510 1649759597741
+collectd_interface_if_packets_rx_total{interface="tbch",instance="apume.heldenzeit.net"} 18037872 1649759597741
+collectd_interface_if_packets_rx_total{interface="tun0",instance="apume.heldenzeit.net"} 0 1649759597741
+collectd_interface_if_packets_rx_total{interface="wghe2",instance="apume.heldenzeit.net"} 2377824 1649759597741
+collectd_interface_if_packets_rx_total{interface="wghe3",instance="apume.heldenzeit.net"} 14762763 1649759597741
+collectd_interface_if_packets_rx_total{interface="wghe4",instance="apume.heldenzeit.net"} 3335292 1649759597741
+collectd_interface_if_packets_rx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 2766791 1649759597741
+# HELP collectd_interface_if_packets_tx_total write_prometheus plugin: 'interface' Type: 'if_packets', Dstype: 'derive', Dsname: 'tx'
+# TYPE collectd_interface_if_packets_tx_total counter
+collectd_interface_if_packets_tx_total{interface="enp1s0",instance="apume.heldenzeit.net"} 170036356 1649759597741
+collectd_interface_if_packets_tx_total{interface="enp2s0",instance="apume.heldenzeit.net"} 53756545 1649759597741
+collectd_interface_if_packets_tx_total{interface="enp3s0",instance="apume.heldenzeit.net"} 513674 1649759597741
+collectd_interface_if_packets_tx_total{interface="tbch",instance="apume.heldenzeit.net"} 4567277 1649759597741
+collectd_interface_if_packets_tx_total{interface="tun0",instance="apume.heldenzeit.net"} 151 1649759597741
+collectd_interface_if_packets_tx_total{interface="wghe2",instance="apume.heldenzeit.net"} 1662789 1649759597741
+collectd_interface_if_packets_tx_total{interface="wghe3",instance="apume.heldenzeit.net"} 18501784 1649759597741
+collectd_interface_if_packets_tx_total{interface="wghe4",instance="apume.heldenzeit.net"} 2567562 1649759597741
+collectd_interface_if_packets_tx_total{interface="wgsb1",instance="apume.heldenzeit.net"} 1768259 1649759597741
+# HELP collectd_memory write_prometheus plugin: 'memory' Type: 'memory', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_memory gauge
+collectd_memory{memory="buffered",instance="apume.heldenzeit.net"} 328990720 1649759597755
+collectd_memory{memory="cached",instance="apume.heldenzeit.net"} 1784983552 1649759597755
+collectd_memory{memory="free",instance="apume.heldenzeit.net"} 260689920 1649759597755
+collectd_memory{memory="slab_recl",instance="apume.heldenzeit.net"} 633057280 1649759597755
+collectd_memory{memory="slab_unrecl",instance="apume.heldenzeit.net"} 70717440 1649759597755
+collectd_memory{memory="used",instance="apume.heldenzeit.net"} 1026355200 1649759597755
+# HELP collectd_memory_percent write_prometheus plugin: 'memory' Type: 'percent', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_memory_percent gauge
+collectd_memory_percent{memory="buffered",instance="apume.heldenzeit.net"} 8.01479224105845 1649759597755
+collectd_memory_percent{memory="cached",instance="apume.heldenzeit.net"} 43.4853369815007 1649759597755
+collectd_memory_percent{memory="free",instance="apume.heldenzeit.net"} 6.35086469350305 1649759597755
+collectd_memory_percent{memory="slab_recl",instance="apume.heldenzeit.net"} 15.4223881326791 1649759597755
+collectd_memory_percent{memory="slab_unrecl",instance="apume.heldenzeit.net"} 1.72280114593967 1649759597755
+collectd_memory_percent{memory="used",instance="apume.heldenzeit.net"} 25.003816805319 1649759597755
+# HELP collectd_processes_contextswitch_total write_prometheus plugin: 'processes' Type: 'contextswitch', Dstype: 'derive', Dsname: 'value'
+# TYPE collectd_processes_contextswitch_total counter
+collectd_processes_contextswitch_total{processes="apache",type="involuntary",instance="apume.heldenzeit.net"} 11027 1649759597896
+collectd_processes_contextswitch_total{processes="apache",type="voluntary",instance="apume.heldenzeit.net"} 705174 1649759597896
+collectd_processes_contextswitch_total{processes="bind",type="involuntary",instance="apume.heldenzeit.net"} 510615 1649759597896
+collectd_processes_contextswitch_total{processes="bind",type="voluntary",instance="apume.heldenzeit.net"} 5842672 1649759597896
+collectd_processes_contextswitch_total{processes="named",type="involuntary",instance="apume.heldenzeit.net"} 510615 1649759597897
+collectd_processes_contextswitch_total{processes="named",type="voluntary",instance="apume.heldenzeit.net"} 5842672 1649759597897
+collectd_processes_contextswitch_total{processes="openvpn",type="involuntary",instance="apume.heldenzeit.net"} 136335 1649759597897
+collectd_processes_contextswitch_total{processes="openvpn",type="voluntary",instance="apume.heldenzeit.net"} 4611143 1649759597897
+collectd_processes_contextswitch_total{processes="prometheus",type="involuntary",instance="apume.heldenzeit.net"} 669317 1649759597897
+collectd_processes_contextswitch_total{processes="prometheus",type="voluntary",instance="apume.heldenzeit.net"} 21824557 1649759597897
+collectd_processes_contextswitch_total{processes="redis-server",type="involuntary",instance="apume.heldenzeit.net"} 101728 1649759597897
+collectd_processes_contextswitch_total{processes="redis-server",type="voluntary",instance="apume.heldenzeit.net"} 5705407 1649759597897
+collectd_processes_contextswitch_total{processes="snmpd",type="involuntary",instance="apume.heldenzeit.net"} 8 1649759597897
+collectd_processes_contextswitch_total{processes="snmpd",type="voluntary",instance="apume.heldenzeit.net"} 131 1649759597897
+collectd_processes_contextswitch_total{processes="splunk-client",type="involuntary",instance="apume.heldenzeit.net"} 501474 1649759597897
+collectd_processes_contextswitch_total{processes="splunk-client",type="voluntary",instance="apume.heldenzeit.net"} 26681307 1649759597897
+collectd_processes_contextswitch_total{processes="splunk-server",type="involuntary",instance="apume.heldenzeit.net"} 6997988 1649759597897
+collectd_processes_contextswitch_total{processes="splunk-server",type="voluntary",instance="apume.heldenzeit.net"} 52064706 1649759597897
+# HELP collectd_processes_disk_octets_read_total write_prometheus plugin: 'processes' Type: 'disk_octets', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_processes_disk_octets_read_total counter
+collectd_processes_disk_octets_read_total{processes="apache",instance="apume.heldenzeit.net"} 17006592 1649759597896
+collectd_processes_disk_octets_read_total{processes="bind",instance="apume.heldenzeit.net"} 5767168 1649759597896
+collectd_processes_disk_octets_read_total{processes="collectd",instance="apume.heldenzeit.net"} 237568 1649759597896
+collectd_processes_disk_octets_read_total{processes="named",instance="apume.heldenzeit.net"} 5767168 1649759597897
+collectd_processes_disk_octets_read_total{processes="openvpn",instance="apume.heldenzeit.net"} 1236992 1649759597897
+collectd_processes_disk_octets_read_total{processes="prometheus",instance="apume.heldenzeit.net"} 11833344 1649759597897
+collectd_processes_disk_octets_read_total{processes="redis-server",instance="apume.heldenzeit.net"} 2854912 1649759597897
+collectd_processes_disk_octets_read_total{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_disk_octets_read_total{processes="splunk-client",instance="apume.heldenzeit.net"} 1017434112 1649759597897
+collectd_processes_disk_octets_read_total{processes="splunk-server",instance="apume.heldenzeit.net"} 12505550848 1649759597897
+# HELP collectd_processes_disk_octets_write_total write_prometheus plugin: 'processes' Type: 'disk_octets', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_processes_disk_octets_write_total counter
+collectd_processes_disk_octets_write_total{processes="apache",instance="apume.heldenzeit.net"} 45359104 1649759597896
+collectd_processes_disk_octets_write_total{processes="bind",instance="apume.heldenzeit.net"} 10457088 1649759597896
+collectd_processes_disk_octets_write_total{processes="collectd",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_disk_octets_write_total{processes="named",instance="apume.heldenzeit.net"} 10457088 1649759597897
+collectd_processes_disk_octets_write_total{processes="openvpn",instance="apume.heldenzeit.net"} 234377216 1649759597897
+collectd_processes_disk_octets_write_total{processes="prometheus",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_disk_octets_write_total{processes="redis-server",instance="apume.heldenzeit.net"} 4096 1649759597897
+collectd_processes_disk_octets_write_total{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_disk_octets_write_total{processes="splunk-client",instance="apume.heldenzeit.net"} 639778816 1649759597897
+collectd_processes_disk_octets_write_total{processes="splunk-server",instance="apume.heldenzeit.net"} 217626103808 1649759597897
+# HELP collectd_processes_file_handles write_prometheus plugin: 'processes' Type: 'file_handles', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_file_handles gauge
+collectd_processes_file_handles{processes="apache",type="mapped",instance="apume.heldenzeit.net"} 353 1649759597896
+collectd_processes_file_handles{processes="bind",type="mapped",instance="apume.heldenzeit.net"} 69 1649759597896
+collectd_processes_file_handles{processes="named",type="mapped",instance="apume.heldenzeit.net"} 69 1649759597897
+collectd_processes_file_handles{processes="openvpn",type="mapped",instance="apume.heldenzeit.net"} 14 1649759597897
+collectd_processes_file_handles{processes="prometheus",type="mapped",instance="apume.heldenzeit.net"} 9 1649759597897
+collectd_processes_file_handles{processes="redis-server",type="mapped",instance="apume.heldenzeit.net"} 8 1649759597897
+collectd_processes_file_handles{processes="splunk-client",type="mapped",instance="apume.heldenzeit.net"} 76 1649759597897
+collectd_processes_file_handles{processes="splunk-server",type="mapped",instance="apume.heldenzeit.net"} 224 1649759597897
+collectd_processes_file_handles{processes="apache",type="mapped",instance="apume.heldenzeit.net"} 3227 1649759597896
+collectd_processes_file_handles{processes="bind",type="mapped",instance="apume.heldenzeit.net"} 262 1649759597896
+collectd_processes_file_handles{processes="collectd",type="mapped",instance="apume.heldenzeit.net"} 224 1649759597896
+collectd_processes_file_handles{processes="named",type="mapped",instance="apume.heldenzeit.net"} 262 1649759597897
+collectd_processes_file_handles{processes="openvpn",type="mapped",instance="apume.heldenzeit.net"} 203 1649759597897
+collectd_processes_file_handles{processes="prometheus",type="mapped",instance="apume.heldenzeit.net"} 82 1649759597897
+collectd_processes_file_handles{processes="redis-server",type="mapped",instance="apume.heldenzeit.net"} 145 1649759597897
+collectd_processes_file_handles{processes="splunk-client",type="mapped",instance="apume.heldenzeit.net"} 353 1649759597897
+collectd_processes_file_handles{processes="splunk-server",type="mapped",instance="apume.heldenzeit.net"} 668 1649759597897
+# HELP collectd_processes_fork_rate_total write_prometheus plugin: 'processes' Type: 'fork_rate', Dstype: 'derive', Dsname: 'value'
+# TYPE collectd_processes_fork_rate_total counter
+collectd_processes_fork_rate_total{instance="apume.heldenzeit.net"} 982803 1649759597897
+# HELP collectd_processes_io_octets_rx_total write_prometheus plugin: 'processes' Type: 'io_octets', Dstype: 'derive', Dsname: 'rx'
+# TYPE collectd_processes_io_octets_rx_total counter
+collectd_processes_io_octets_rx_total{processes="apache",instance="apume.heldenzeit.net"} 112860706 1649759597896
+collectd_processes_io_octets_rx_total{processes="bind",instance="apume.heldenzeit.net"} 47578398 1649759597896
+collectd_processes_io_octets_rx_total{processes="collectd",instance="apume.heldenzeit.net"} 54067218308 1649759597896
+collectd_processes_io_octets_rx_total{processes="named",instance="apume.heldenzeit.net"} 47578398 1649759597897
+collectd_processes_io_octets_rx_total{processes="openvpn",instance="apume.heldenzeit.net"} 690171978 1649759597897
+collectd_processes_io_octets_rx_total{processes="prometheus",instance="apume.heldenzeit.net"} 816646998 1649759597897
+collectd_processes_io_octets_rx_total{processes="redis-server",instance="apume.heldenzeit.net"} 1833950328 1649759597897
+collectd_processes_io_octets_rx_total{processes="snmpd",instance="apume.heldenzeit.net"} 11050 1649759597897
+collectd_processes_io_octets_rx_total{processes="splunk-client",instance="apume.heldenzeit.net"} 96506622924 1649759597897
+collectd_processes_io_octets_rx_total{processes="splunk-server",instance="apume.heldenzeit.net"} 2339396232601 1649759597897
+# HELP collectd_processes_io_octets_tx_total write_prometheus plugin: 'processes' Type: 'io_octets', Dstype: 'derive', Dsname: 'tx'
+# TYPE collectd_processes_io_octets_tx_total counter
+collectd_processes_io_octets_tx_total{processes="apache",instance="apume.heldenzeit.net"} 151678852 1649759597896
+collectd_processes_io_octets_tx_total{processes="bind",instance="apume.heldenzeit.net"} 82058603 1649759597896
+collectd_processes_io_octets_tx_total{processes="collectd",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_io_octets_tx_total{processes="named",instance="apume.heldenzeit.net"} 82058603 1649759597897
+collectd_processes_io_octets_tx_total{processes="openvpn",instance="apume.heldenzeit.net"} 23699199491 1649759597897
+collectd_processes_io_octets_tx_total{processes="prometheus",instance="apume.heldenzeit.net"} 95956923 1649759597897
+collectd_processes_io_octets_tx_total{processes="redis-server",instance="apume.heldenzeit.net"} 6846 1649759597897
+collectd_processes_io_octets_tx_total{processes="snmpd",instance="apume.heldenzeit.net"} 4096 1649759597897
+collectd_processes_io_octets_tx_total{processes="splunk-client",instance="apume.heldenzeit.net"} 1804067367 1649759597897
+collectd_processes_io_octets_tx_total{processes="splunk-server",instance="apume.heldenzeit.net"} 186607505988 1649759597897
+# HELP collectd_processes_io_ops_read_total write_prometheus plugin: 'processes' Type: 'io_ops', Dstype: 'derive', Dsname: 'read'
+# TYPE collectd_processes_io_ops_read_total counter
+collectd_processes_io_ops_read_total{processes="apache",instance="apume.heldenzeit.net"} 171461 1649759597896
+collectd_processes_io_ops_read_total{processes="bind",instance="apume.heldenzeit.net"} 6674898 1649759597896
+collectd_processes_io_ops_read_total{processes="collectd",instance="apume.heldenzeit.net"} 115064541 1649759597896
+collectd_processes_io_ops_read_total{processes="named",instance="apume.heldenzeit.net"} 6674898 1649759597897
+collectd_processes_io_ops_read_total{processes="openvpn",instance="apume.heldenzeit.net"} 4747450 1649759597897
+collectd_processes_io_ops_read_total{processes="prometheus",instance="apume.heldenzeit.net"} 1438707 1649759597897
+collectd_processes_io_ops_read_total{processes="redis-server",instance="apume.heldenzeit.net"} 5705619 1649759597897
+collectd_processes_io_ops_read_total{processes="snmpd",instance="apume.heldenzeit.net"} 18 1649759597897
+collectd_processes_io_ops_read_total{processes="splunk-client",instance="apume.heldenzeit.net"} 37260760 1649759597897
+collectd_processes_io_ops_read_total{processes="splunk-server",instance="apume.heldenzeit.net"} 849880920 1649759597897
+# HELP collectd_processes_io_ops_write_total write_prometheus plugin: 'processes' Type: 'io_ops', Dstype: 'derive', Dsname: 'write'
+# TYPE collectd_processes_io_ops_write_total counter
+collectd_processes_io_ops_write_total{processes="apache",instance="apume.heldenzeit.net"} 117450 1649759597896
+collectd_processes_io_ops_write_total{processes="bind",instance="apume.heldenzeit.net"} 5403288 1649759597896
+collectd_processes_io_ops_write_total{processes="collectd",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_io_ops_write_total{processes="named",instance="apume.heldenzeit.net"} 5403288 1649759597897
+collectd_processes_io_ops_write_total{processes="openvpn",instance="apume.heldenzeit.net"} 19924616 1649759597897
+collectd_processes_io_ops_write_total{processes="prometheus",instance="apume.heldenzeit.net"} 723300 1649759597897
+collectd_processes_io_ops_write_total{processes="redis-server",instance="apume.heldenzeit.net"} 18 1649759597897
+collectd_processes_io_ops_write_total{processes="snmpd",instance="apume.heldenzeit.net"} 1 1649759597897
+collectd_processes_io_ops_write_total{processes="splunk-client",instance="apume.heldenzeit.net"} 7916116 1649759597897
+collectd_processes_io_ops_write_total{processes="splunk-server",instance="apume.heldenzeit.net"} 196222388 1649759597897
+# HELP collectd_processes_ps_code write_prometheus plugin: 'processes' Type: 'ps_code', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_code gauge
+collectd_processes_ps_code{processes="apache",instance="apume.heldenzeit.net"} 61366272 1649759597896
+collectd_processes_ps_code{processes="bind",instance="apume.heldenzeit.net"} 11190272 1649759597896
+collectd_processes_ps_code{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_code{processes="collectd",instance="apume.heldenzeit.net"} 5365760 1649759597896
+collectd_processes_ps_code{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_code{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="named",instance="apume.heldenzeit.net"} 11190272 1649759597897
+collectd_processes_ps_code{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="openvpn",instance="apume.heldenzeit.net"} 13533184 1649759597897
+collectd_processes_ps_code{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="prometheus",instance="apume.heldenzeit.net"} 7622656 1649759597897
+collectd_processes_ps_code{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="redis-server",instance="apume.heldenzeit.net"} 9166848 1649759597897
+collectd_processes_ps_code{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_code{processes="splunk-client",instance="apume.heldenzeit.net"} 175620096 1649759597897
+collectd_processes_ps_code{processes="splunk-server",instance="apume.heldenzeit.net"} 263430144 1649759597897
+# HELP collectd_processes_ps_count_processes write_prometheus plugin: 'processes' Type: 'ps_count', Dstype: 'gauge', Dsname: 'processes'
+# TYPE collectd_processes_ps_count_processes gauge
+collectd_processes_ps_count_processes{processes="apache",instance="apume.heldenzeit.net"} 11 1649759597896
+collectd_processes_ps_count_processes{processes="bind",instance="apume.heldenzeit.net"} 1 1649759597896
+collectd_processes_ps_count_processes{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_count_processes{processes="collectd",instance="apume.heldenzeit.net"} 1 1649759597896
+collectd_processes_ps_count_processes{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_count_processes{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="named",instance="apume.heldenzeit.net"} 1 1649759597897
+collectd_processes_ps_count_processes{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="openvpn",instance="apume.heldenzeit.net"} 2 1649759597897
+collectd_processes_ps_count_processes{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="prometheus",instance="apume.heldenzeit.net"} 1 1649759597897
+collectd_processes_ps_count_processes{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="redis-server",instance="apume.heldenzeit.net"} 1 1649759597897
+collectd_processes_ps_count_processes{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_processes{processes="splunk-client",instance="apume.heldenzeit.net"} 2 1649759597897
+collectd_processes_ps_count_processes{processes="splunk-server",instance="apume.heldenzeit.net"} 3 1649759597897
+# HELP collectd_processes_ps_count_threads write_prometheus plugin: 'processes' Type: 'ps_count', Dstype: 'gauge', Dsname: 'threads'
+# TYPE collectd_processes_ps_count_threads gauge
+collectd_processes_ps_count_threads{processes="apache",instance="apume.heldenzeit.net"} 21 1649759597896
+collectd_processes_ps_count_threads{processes="bind",instance="apume.heldenzeit.net"} 14 1649759597896
+collectd_processes_ps_count_threads{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_count_threads{processes="collectd",instance="apume.heldenzeit.net"} 13 1649759597896
+collectd_processes_ps_count_threads{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_count_threads{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="named",instance="apume.heldenzeit.net"} 14 1649759597897
+collectd_processes_ps_count_threads{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="openvpn",instance="apume.heldenzeit.net"} 2 1649759597897
+collectd_processes_ps_count_threads{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="prometheus",instance="apume.heldenzeit.net"} 11 1649759597897
+collectd_processes_ps_count_threads{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="redis-server",instance="apume.heldenzeit.net"} 5 1649759597897
+collectd_processes_ps_count_threads{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_count_threads{processes="splunk-client",instance="apume.heldenzeit.net"} 43 1649759597897
+collectd_processes_ps_count_threads{processes="splunk-server",instance="apume.heldenzeit.net"} 97 1649759597897
+# HELP collectd_processes_ps_cputime_syst_total write_prometheus plugin: 'processes' Type: 'ps_cputime', Dstype: 'derive', Dsname: 'syst'
+# TYPE collectd_processes_ps_cputime_syst_total counter
+collectd_processes_ps_cputime_syst_total{processes="apache",instance="apume.heldenzeit.net"} 72350000 1649759597896
+collectd_processes_ps_cputime_syst_total{processes="bind",instance="apume.heldenzeit.net"} 610310000 1649759597896
+collectd_processes_ps_cputime_syst_total{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_cputime_syst_total{processes="collectd",instance="apume.heldenzeit.net"} 5502440000 1649759597896
+collectd_processes_ps_cputime_syst_total{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_cputime_syst_total{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="named",instance="apume.heldenzeit.net"} 610310000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="openvpn",instance="apume.heldenzeit.net"} 2602950000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="prometheus",instance="apume.heldenzeit.net"} 795780000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="redis-server",instance="apume.heldenzeit.net"} 1260440000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="snmpd",instance="apume.heldenzeit.net"} 30000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="splunk-client",instance="apume.heldenzeit.net"} 2083500000 1649759597897
+collectd_processes_ps_cputime_syst_total{processes="splunk-server",instance="apume.heldenzeit.net"} 77107680000 1649759597897
+# HELP collectd_processes_ps_cputime_user_total write_prometheus plugin: 'processes' Type: 'ps_cputime', Dstype: 'derive', Dsname: 'user'
+# TYPE collectd_processes_ps_cputime_user_total counter
+collectd_processes_ps_cputime_user_total{processes="apache",instance="apume.heldenzeit.net"} 218180000 1649759597896
+collectd_processes_ps_cputime_user_total{processes="bind",instance="apume.heldenzeit.net"} 1145770000 1649759597896
+collectd_processes_ps_cputime_user_total{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_cputime_user_total{processes="collectd",instance="apume.heldenzeit.net"} 2701040000 1649759597896
+collectd_processes_ps_cputime_user_total{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_cputime_user_total{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="named",instance="apume.heldenzeit.net"} 1145770000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="openvpn",instance="apume.heldenzeit.net"} 850310000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="prometheus",instance="apume.heldenzeit.net"} 1536860000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_cputime_user_total{processes="redis-server",instance="apume.heldenzeit.net"} 1405990000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="snmpd",instance="apume.heldenzeit.net"} 600000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="splunk-client",instance="apume.heldenzeit.net"} 3858540000 1649759597897
+collectd_processes_ps_cputime_user_total{processes="splunk-server",instance="apume.heldenzeit.net"} 71483840000 1649759597897
+# HELP collectd_processes_ps_data write_prometheus plugin: 'processes' Type: 'ps_data', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_data gauge
+collectd_processes_ps_data{processes="apache",instance="apume.heldenzeit.net"} 117600256 1649759597896
+collectd_processes_ps_data{processes="bind",instance="apume.heldenzeit.net"} 131969024 1649759597896
+collectd_processes_ps_data{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_data{processes="collectd",instance="apume.heldenzeit.net"} 113233920 1649759597896
+collectd_processes_ps_data{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_data{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="named",instance="apume.heldenzeit.net"} 131969024 1649759597897
+collectd_processes_ps_data{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="openvpn",instance="apume.heldenzeit.net"} 1339392 1649759597897
+collectd_processes_ps_data{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="prometheus",instance="apume.heldenzeit.net"} 195231744 1649759597897
+collectd_processes_ps_data{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="redis-server",instance="apume.heldenzeit.net"} 47259648 1649759597897
+collectd_processes_ps_data{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_data{processes="splunk-client",instance="apume.heldenzeit.net"} 286785536 1649759597897
+collectd_processes_ps_data{processes="splunk-server",instance="apume.heldenzeit.net"} 1046806528 1649759597897
+# HELP collectd_processes_ps_pagefaults_majflt_total write_prometheus plugin: 'processes' Type: 'ps_pagefaults', Dstype: 'derive', Dsname: 'majflt'
+# TYPE collectd_processes_ps_pagefaults_majflt_total counter
+collectd_processes_ps_pagefaults_majflt_total{processes="apache",instance="apume.heldenzeit.net"} 1138 1649759597896
+collectd_processes_ps_pagefaults_majflt_total{processes="bind",instance="apume.heldenzeit.net"} 408 1649759597896
+collectd_processes_ps_pagefaults_majflt_total{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_pagefaults_majflt_total{processes="collectd",instance="apume.heldenzeit.net"} 17 1649759597896
+collectd_processes_ps_pagefaults_majflt_total{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_pagefaults_majflt_total{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="named",instance="apume.heldenzeit.net"} 408 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="openvpn",instance="apume.heldenzeit.net"} 27 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="prometheus",instance="apume.heldenzeit.net"} 227 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="redis-server",instance="apume.heldenzeit.net"} 32 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="splunk-client",instance="apume.heldenzeit.net"} 1981 1649759597897
+collectd_processes_ps_pagefaults_majflt_total{processes="splunk-server",instance="apume.heldenzeit.net"} 556 1649759597897
+# HELP collectd_processes_ps_pagefaults_minflt_total write_prometheus plugin: 'processes' Type: 'ps_pagefaults', Dstype: 'derive', Dsname: 'minflt'
+# TYPE collectd_processes_ps_pagefaults_minflt_total counter
+collectd_processes_ps_pagefaults_minflt_total{processes="apache",instance="apume.heldenzeit.net"} 88373 1649759597896
+collectd_processes_ps_pagefaults_minflt_total{processes="bind",instance="apume.heldenzeit.net"} 5635 1649759597896
+collectd_processes_ps_pagefaults_minflt_total{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_pagefaults_minflt_total{processes="collectd",instance="apume.heldenzeit.net"} 70747 1649759597896
+collectd_processes_ps_pagefaults_minflt_total{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_pagefaults_minflt_total{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="named",instance="apume.heldenzeit.net"} 5635 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="openvpn",instance="apume.heldenzeit.net"} 8819 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="prometheus",instance="apume.heldenzeit.net"} 10632 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="redis-server",instance="apume.heldenzeit.net"} 1504 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="snmpd",instance="apume.heldenzeit.net"} 247 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="splunk-client",instance="apume.heldenzeit.net"} 17764134 1649759597897
+collectd_processes_ps_pagefaults_minflt_total{processes="splunk-server",instance="apume.heldenzeit.net"} 5219967731 1649759597897
+# HELP collectd_processes_ps_rss write_prometheus plugin: 'processes' Type: 'ps_rss', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_rss gauge
+collectd_processes_ps_rss{processes="apache",instance="apume.heldenzeit.net"} 107311104 1649759597896
+collectd_processes_ps_rss{processes="bind",instance="apume.heldenzeit.net"} 47931392 1649759597896
+collectd_processes_ps_rss{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_rss{processes="collectd",instance="apume.heldenzeit.net"} 9924608 1649759597896
+collectd_processes_ps_rss{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_rss{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="named",instance="apume.heldenzeit.net"} 47931392 1649759597897
+collectd_processes_ps_rss{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="openvpn",instance="apume.heldenzeit.net"} 8376320 1649759597897
+collectd_processes_ps_rss{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="prometheus",instance="apume.heldenzeit.net"} 33705984 1649759597897
+collectd_processes_ps_rss{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="redis-server",instance="apume.heldenzeit.net"} 11026432 1649759597897
+collectd_processes_ps_rss{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_rss{processes="splunk-client",instance="apume.heldenzeit.net"} 107929600 1649759597897
+collectd_processes_ps_rss{processes="splunk-server",instance="apume.heldenzeit.net"} 454893568 1649759597897
+# HELP collectd_processes_ps_stacksize write_prometheus plugin: 'processes' Type: 'ps_stacksize', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_stacksize gauge
+collectd_processes_ps_stacksize{processes="apache",instance="apume.heldenzeit.net"} 1.54808785147491e+15 1649759597896
+collectd_processes_ps_stacksize{processes="bind",instance="apume.heldenzeit.net"} 140724066409504 1649759597896
+collectd_processes_ps_stacksize{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_stacksize{processes="collectd",instance="apume.heldenzeit.net"} 140735082999952 1649759597896
+collectd_processes_ps_stacksize{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_stacksize{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="named",instance="apume.heldenzeit.net"} 140724066409504 1649759597897
+collectd_processes_ps_stacksize{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="openvpn",instance="apume.heldenzeit.net"} 281453835964608 1649759597897
+collectd_processes_ps_stacksize{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="prometheus",instance="apume.heldenzeit.net"} 140735936484128 1649759597897
+collectd_processes_ps_stacksize{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="redis-server",instance="apume.heldenzeit.net"} 140736372663264 1649759597897
+collectd_processes_ps_stacksize{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_stacksize{processes="splunk-client",instance="apume.heldenzeit.net"} 281442194830304 1649759597897
+collectd_processes_ps_stacksize{processes="splunk-server",instance="apume.heldenzeit.net"} 422167488223856 1649759597897
+# HELP collectd_processes_ps_state write_prometheus plugin: 'processes' Type: 'ps_state', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_state gauge
+collectd_processes_ps_state{processes="blocked",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_state{processes="paging",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_state{processes="running",instance="apume.heldenzeit.net"} 1 1649759597896
+collectd_processes_ps_state{processes="sleeping",instance="apume.heldenzeit.net"} 109 1649759597896
+collectd_processes_ps_state{processes="stopped",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_state{processes="zombies",instance="apume.heldenzeit.net"} 0 1649759597896
+# HELP collectd_processes_ps_vm write_prometheus plugin: 'processes' Type: 'ps_vm', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_processes_ps_vm gauge
+collectd_processes_ps_vm{processes="apache",instance="apume.heldenzeit.net"} 243707904 1649759597896
+collectd_processes_ps_vm{processes="bind",instance="apume.heldenzeit.net"} 1022132224 1649759597896
+collectd_processes_ps_vm{processes="bitcoind",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_vm{processes="collectd",instance="apume.heldenzeit.net"} 993816576 1649759597896
+collectd_processes_ps_vm{processes="gitlab-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="gitlab-sidekiq",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="gitlab-unicorn",instance="apume.heldenzeit.net"} 0 1649759597896
+collectd_processes_ps_vm{processes="grafana",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="lnd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="motion",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="mysqld",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="named",instance="apume.heldenzeit.net"} 1022132224 1649759597897
+collectd_processes_ps_vm{processes="nym-gateway",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="nym-mixnode",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="openvpn",instance="apume.heldenzeit.net"} 23187456 1649759597897
+collectd_processes_ps_vm{processes="plex",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="postgres-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="prometheus",instance="apume.heldenzeit.net"} 1492058112 1649759597897
+collectd_processes_ps_vm{processes="puppet-server",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="redis-server",instance="apume.heldenzeit.net"} 69644288 1649759597897
+collectd_processes_ps_vm{processes="snmpd",instance="apume.heldenzeit.net"} 0 1649759597897
+collectd_processes_ps_vm{processes="splunk-client",instance="apume.heldenzeit.net"} 468729856 1649759597897
+collectd_processes_ps_vm{processes="splunk-server",instance="apume.heldenzeit.net"} 1319546880 1649759597897
+# HELP collectd_sensors_temperature write_prometheus plugin: 'sensors' Type: 'temperature', Dstype: 'gauge', Dsname: 'value'
+# TYPE collectd_sensors_temperature gauge
+collectd_sensors_temperature{sensors="k10temp-pci-00c3",type="temp1",instance="apume.heldenzeit.net"} 61.75 1649759597803
+
+# collectd/write_prometheus 5.12.0.git at apume.heldenzeit.net
