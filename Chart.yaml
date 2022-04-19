@@ -1,0 +1,9 @@
+apiVersion: v2
+name: sim-exporter
+description: A prometheus metric simulator
+
+type: application
+
+version: 0.0.0
+
+appVersion: 0.0.0
