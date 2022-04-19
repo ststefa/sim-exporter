@@ -161,7 +161,10 @@ func Test_loadAndValidateConfiguration(t *testing.T) {
 					t.Errorf("loadAndValidateConfiguration(%v) error = %v, wantErr %v", tt.name, err, tt.wantErr)
 				}
 			} else {
-				setupMetricsCollection(config)
+				if tt.wantErr {
+					t.Errorf("loadAndValidateConfiguration(%v) no error but wantErr %v", tt.name, tt.wantErr)
+				}
+				err = setupMetricsCollection(config)
 				if err != nil {
 					t.Error(err)
 				}

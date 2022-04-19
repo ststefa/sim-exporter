@@ -6,7 +6,7 @@ import (
 	"os"
 	"reflect"
 
-	"example.com/sim-exporter/cmd"
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/cmd"
 	"github.com/sirupsen/logrus"
 )
 
@@ -25,7 +25,7 @@ func panicExit() {
 		if errors.As(r.(error), &simErr) {
 			fmt.Fprintf(os.Stderr, "Simulation error: %v\n", r)
 		} else {
-			log.Errorf("unexpected %s: '%v'\n", reflect.TypeOf(r).Elem(), r)
+			log.Errorf("unexpected %s: %q\n", reflect.TypeOf(r).Elem(), r)
 		}
 	}
 }

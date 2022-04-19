@@ -2,7 +2,8 @@
 # has its own (and very cool) mechanism to transfer artifacts between jobs. See
 # https://git.mgmt.innovo-cloud.de/help/ci/pipelines/job_artifacts
 
-FROM ubuntu
+FROM alpine
 WORKDIR /
-COPY build/sim-exporter ./
-ENTRYPOINT ["/sim-exporter"]
+COPY build/sim-exporter .
+COPY build/examples/ examples
+CMD ["/sim-exporter"]

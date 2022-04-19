@@ -59,7 +59,7 @@ func doServe(cmd *cobra.Command, args []string) {
 	http.Handle("/", helpHandler)
 	http.Handle(path, promhttp.Handler())
 
-	log.Printf("Serving metrics on *:%d/%v", port, path)
+	log.Printf("Serving metrics on *:%d%v", port, path)
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), nil))
 
 }

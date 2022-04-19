@@ -4,10 +4,10 @@
 # any Dockerfile*
 
 # alpine lacks upx package for aarch64 (Apple Silicon)
-#FROM golang:1.16-alpine AS build
-#RUN apk --no-cache add git make upx curl
-FROM golang:1.18-bullseye AS build
-RUN apt-get update ; apt-get install -y --no-install-recommends git make upx curl ca-certificates ; rm -fr /var/lib/apt/lists/*
+FROM golang:1.18-alpine AS build
+RUN apk --no-cache add git make curl
+#FROM golang:1.18-bullseye AS build
+#RUN apt-get update ; apt-get install -y --no-install-recommends git make curl ; rm -fr /var/lib/apt/lists/*
 WORKDIR /app
 # Copy just go mod and sum files first
 COPY go.mod go.sum ./
@@ -20,8 +20,8 @@ COPY . .
 RUN --mount=type=secret,id=netrc,target=/root/.netrc make local_build
 
 # The remaining part should be similar to the regular `Dockerfile`
-FROM scratch
+FROM alpine
 WORKDIR /
-COPY --from=build /app/build/sim-exporter ./
-COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-ENTRYPOINT ["/sim-exporter"]
+COPY --from=build /app/build/sim-exporter .
+COPY --from=build /app/build/examples examples
+CMD ["/sim-exporter"]
