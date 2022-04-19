@@ -25,7 +25,7 @@ var (
 
 	convertCmd = &cobra.Command{
 		Use:   "convert <prometheus-scrape-file>",
-		Short: "Parse <prometheus-scrape-file> and create simulator yaml config",
+		Short: "Parse prometheus-style scrape file and create simulator yaml config",
 		Long:  "Parses data in prometheus scrape format read from <prometheus-scrape-file> and turns it into a yaml structure suitable as input for the simulator",
 		Args:  cobra.ExactArgs(1),
 		Run:   doConvert,
@@ -133,7 +133,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 			metricName = fields[2]
 			if strings.HasPrefix(metricName, "go_") || strings.HasPrefix(metricName, "process_") || strings.HasPrefix(metricName, "promhttp_") {
 				skipMetric = true
-				log.Infof("Line %vff: Skipping prometheus-internal metric '%v'", lineno, metricName)
+				log.Infof("Line %vff: Skipping prometheus-internal metric %q", lineno, metricName)
 			} else {
 				skipMetric = false
 			}
@@ -156,7 +156,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 			fields := strings.Split(line, " ")
 
 			if fields[2] != metricName {
-				return nil, &SimulationError{fmt.Sprintf("Line %v: Out-of-order line '%v' (expecting 'TYPE %v ...')", lineno, line, metricName)}
+				return nil, &SimulationError{fmt.Sprintf("Line %v: Out-of-order line %q (expecting 'TYPE %v ...')", lineno, line, metricName)}
 			}
 			if !skipMetric {
 				mType := fields[3]
@@ -171,7 +171,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 		} else {
 			// line e.g. 'libvirt_domain_block_meta{bus="scsi",cache="writeback",discard="unmap",disk_type="network",domain="instance-0000bfa6",driver_type="raw",flavor="m1.small",instance_name="zabbix-prod",project_name="C00061-Nexible",project_uuid="077224dcfd454436987147de7d86fa89",root_type="image",root_uuid="fd8ad5aa-6b33-4198-a05d-8be42fc0f20e",serial="",source_file="ephemeral-vms/ed1ce34e-0200-4f2e-a0cc-2b60216e1362_disk",target_device="sda",user_name="OSieben@nexible.de",user_uuid="02a474d230b04749b882362909c79502",uuid="ed1ce34e-0200-4f2e-a0cc-2b60216e1362"} 1'
 			if !expectMetric {
-				return nil, &SimulationError{fmt.Sprintf("Line %v: Unexpected '%v' (not preceded by 'HELP')", lineno, line)}
+				return nil, &SimulationError{fmt.Sprintf("Line %v: Unexpected %q (not preceded by 'HELP')", lineno, line)}
 			}
 			expectType = false
 			expectHelp = true
@@ -180,7 +180,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 				matchMap := createMatchMap(regexpMetricItem, &line)
 				if len(matchMap) >= 1 {
 					if matchMap["name"] != metricName {
-						log.Infof("Line %v: Ignoring out-of-order line '%v' (expecting '%v ...')", lineno, line, metricName)
+						log.Infof("Line %v: Ignoring out-of-order line %q (expecting '%v ...')", lineno, line, metricName)
 						continue
 					}
 
@@ -193,7 +193,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 					}
 					value, err := generateValueRange(matchMap["value"], int(randInt.Int64()))
 					if err != nil {
-						log.Infof("Line %v: Skipping metric item '%v' (cannot parse value '%v')", lineno, line, matchMap["value"])
+						log.Infof("Line %v: Skipping metric item %q (cannot parse value %q)", lineno, line, matchMap["value"])
 						continue
 					} else {
 						item.Value = value
@@ -213,7 +213,7 @@ func buildConfig(scrapeLines *[]string) (*Configuration, error) {
 					tmpMetric.Items = append(tmpMetric.Items, item)
 					config.Metrics[metricName] = tmpMetric
 				} else {
-					log.Infof("Line %v: Skipping unparsable metric item '%v' (must match regex '%v')", lineno, line, regexpMetricItem)
+					log.Infof("Line %v: Skipping unparsable metric item %q (must match regex %q)", lineno, line, regexpMetricItem)
 					continue
 				}
 			}

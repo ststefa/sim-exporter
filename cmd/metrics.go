@@ -65,7 +65,7 @@ func setupMetricsCollection(config *Configuration) error {
 			metric.prometheus.histogram = vec
 			prometheus.MustRegister(vec)
 		default:
-			return fmt.Errorf("metric %v: type '%v' not defined", metricName, metric.Type)
+			return fmt.Errorf("metric %v: type %q not defined", metricName, metric.Type)
 		}
 
 		config.Metrics[metricName] = metric

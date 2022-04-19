@@ -134,7 +134,7 @@ func loadAndValidateConfiguration(filename string) (*Configuration, error) {
 	}
 	for metricName, metric := range config.Metrics {
 		if !(metric.Type == "gauge" || metric.Type == "counter" || metric.Type == "summary" || metric.Type == "histogram") {
-			validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.type: Unknown metric type '%v'. Must be one of gauge, counter, summary, histogram", metricName, metric.Type))
+			validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.type: Unknown metric type %q. Must be one of gauge, counter, summary, histogram", metricName, metric.Type))
 		}
 		if len(metric.Items) == 0 {
 			validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.items: Must have at least one element", metricName))
@@ -145,12 +145,12 @@ func loadAndValidateConfiguration(filename string) (*Configuration, error) {
 				for itemLabelName, _ := range item.Labels {
 					itemLabelSlice = append(itemLabelSlice, itemLabelName)
 					if isNotInSlice(itemLabelName, metric.Labels) {
-						validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.items: Item label '%v' not declared in metric labels", metricName, itemLabelName))
+						validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.items: Item label %q not declared in metric labels", metricName, itemLabelName))
 					}
 				}
 				for _, metricLabelName := range metric.Labels {
 					if isNotInSlice(metricLabelName, itemLabelSlice) {
-						validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.items: Metric label '%v' missing from item labels", metricName, metricLabelName))
+						validationErrors = append(validationErrors, fmt.Sprintf("metrics.%v.items: Metric label %q missing from item labels", metricName, metricLabelName))
 					}
 				}
 
