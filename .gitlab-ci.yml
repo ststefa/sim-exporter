@@ -7,7 +7,7 @@ variables:
   GO_BUILD_COMMAND: 'make alm_build'
   GO_TEST_COMMAND: 'go clean -testcache && go test ./... -coverprofile=coverage.out'
 
-  # ALM expects one or more directories below (one dir per chart)
+  # ALM expects one or more directories below this one (one dir per chart)
   HELM_CHART_PATH: 'deployment'
 
   # Helm unit tests considered bloat ;)
