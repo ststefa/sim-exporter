@@ -8,6 +8,71 @@ Acknowledgements go to <https://github.com/webdevops/simulation-exporter> for in
 
 The simulator reads metric definitions from a yaml configuration file and serves them as a scrapable prometheus page. The metric values are modified in intervals.
 
+As usual, the code can be invoked in several ways:
+
+### Go-Run Locally
+
+```sh
+$ git clone <repo>
+$ cd <repo>
+$ go run . version
+0.0.0
+```
+
+### Build and run locally
+
+```sh
+$ git clone <repo>
+$ cd <repo>
+$ make local_build
+$ build/sim-exporter version
+0.0.0
+```
+
+### Use GEC image, run locally
+
+```sh
+$ docker run --rm artifactory.intern.gec.io/docker-release-local/sim-exporter version
+0.0.0
+```
+
+To work with local files you can optionally bind-mount your directory into the container:
+
+```sh
+$ cat myconf.yaml
+version: "1"
+metrics:
+  population:
+    name: population
+    help: This is it
+    type: gauge
+    labels:
+    - planet
+    items:
+    - value: 6.750e+09-8.086e+09
+      labels:
+        planet: earth
+    - value: "0"
+      labels:
+        planet: mars
+$ docker run --rm -v $(pwd):/bla artifactory.intern.gec.io/docker-release-local/sim-exporter check /bla/myconf.yaml
+/bla/myconf.yaml validated successfully
+```
+
+### Run on k8s
+
+First, configure your local kubectl and helm to connect to your destination cluster. Once done:
+
+```sh
+$ git clone <repo>
+$ cd <repo>/deployment/chart
+# Potentially review and change values.yaml
+$ helm upgrade --install simex .
+```
+
+
+## Commands
+
 The simulator features the following commands
 
 ### convert
