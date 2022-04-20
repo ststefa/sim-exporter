@@ -13,6 +13,9 @@ variables:
   # Helm unit tests considered bloat ;)
   DISABLE_HELM_UNIT_TEST_JOB: 'true'
 
+  # Purpose of "product catalog" is (yet) unknown, enabling causes ALM to fail
+  DISABLE_PRODUCT_CATALOG_AUTOUPDATE: "true"
+
   # Disabling SonarQube code quality checks. Saves ~10s but should not
   # usually be disabled
   #DISABLE_SONAR: 'true'
