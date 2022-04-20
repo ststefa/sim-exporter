@@ -1,9 +1,13 @@
-package cmd
+package metrics
 
 import (
+	"database/sql"
 	"io/ioutil"
 	"os"
+	"reflect"
 	"testing"
+
+	"gopkg.in/guregu/null.v4"
 )
 
 func generateTempConfig(content []string) (fileName string, err error) {
@@ -19,7 +23,7 @@ func generateTempConfig(content []string) (fileName string, err error) {
 	return f.Name(), nil
 }
 
-func Test_loadAndValidateConfiguration(t *testing.T) {
+func Test_LoadAndValidateConfiguration(t *testing.T) {
 	tests := []struct {
 		name    string
 		content []string
@@ -89,7 +93,7 @@ func Test_loadAndValidateConfiguration(t *testing.T) {
 			wantErr: true,
 		},
 		{
-			name: "valid-metric",
+			name: "valid-multi-value-metric",
 			content: []string{
 				"metrics:",
 				"  my_metric_b:",
@@ -97,7 +101,7 @@ func Test_loadAndValidateConfiguration(t *testing.T) {
 				"    labels:",
 				"    - l1",
 				"    items:",
-				"    - value: 1",
+				"    - value: 100-200",
 				"      labels:",
 				"        l1: v1",
 			},
@@ -154,20 +158,100 @@ func Test_loadAndValidateConfiguration(t *testing.T) {
 			if err != nil {
 				t.Error(err)
 			}
-			config, err := loadAndValidateConfiguration(tempFile)
+			config, err := LoadAndValidateConfiguration(tempFile)
 			os.Remove(tempFile)
 			if err != nil {
 				if !tt.wantErr {
-					t.Errorf("loadAndValidateConfiguration(%v) error = %v, wantErr %v", tt.name, err, tt.wantErr)
+					t.Errorf("LoadAndValidateConfiguration(%v) error = %v, wantErr %v", tt.name, err, tt.wantErr)
 				}
 			} else {
 				if tt.wantErr {
-					t.Errorf("loadAndValidateConfiguration(%v) no error but wantErr %v", tt.name, tt.wantErr)
+					t.Errorf("LoadAndValidateConfiguration(%v) no error but wantErr %v", tt.name, tt.wantErr)
 				}
-				err = setupMetricsCollection(config)
+				err = SetupMetricsCollection(config)
 				if err != nil {
 					t.Error(err)
 				}
+			}
+		})
+	}
+}
+
+func TestConfigurationMetricItem_parseFloatFromString(t *testing.T) {
+	type args struct {
+		value string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    null.Float
+		wantErr bool
+	}{
+		{
+			name: "123456789",
+			args: args{
+				value: "123456789",
+			},
+			want:    null.Float{sql.NullFloat64{123456789, true}},
+			wantErr: false,
+		},
+		{
+			name: "empty",
+			args: args{
+				value: "",
+			},
+			want:    null.Float{sql.NullFloat64{0, false}},
+			wantErr: true,
+		},
+		{
+			name: "not-a-number",
+			args: args{
+				value: "not-a-number",
+			},
+			want:    null.Float{sql.NullFloat64{0, false}},
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := parseFloatFromString(tt.args.value)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ConfigurationMetricItem.parseFloatFromString() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if got != tt.want {
+				t.Errorf("ConfigurationMetricItem.parseFloatFromString() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestConfigurationMetricItem_generateValue(t *testing.T) {
+	type fields struct {
+		Value     string
+		value     null.Float
+		rangeFrom null.Float
+		rangeTo   null.Float
+		Labels    map[string]string
+	}
+	tests := []struct {
+		name   string
+		fields fields
+		want   null.Float
+	}{
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			m := &ConfigurationMetricItem{
+				Value:     tt.fields.Value,
+				value:     tt.fields.value,
+				rangeFrom: tt.fields.rangeFrom,
+				rangeTo:   tt.fields.rangeTo,
+				Labels:    tt.fields.Labels,
+			}
+			if got := m.generateValue(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("ConfigurationMetricItem.generateValue() = %v, want %v", got, tt.want)
 			}
 		})
 	}

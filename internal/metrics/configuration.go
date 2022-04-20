@@ -1,4 +1,4 @@
-package cmd
+package metrics
 
 import (
 	"fmt"
@@ -7,8 +7,10 @@ import (
 	"regexp"
 	"strconv"
 
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
 	"github.com/docker/go-units"
 	"github.com/prometheus/client_golang/prometheus"
+	"gopkg.in/guregu/null.v4"
 	"gopkg.in/yaml.v2"
 )
 
@@ -60,30 +62,30 @@ func (m *ConfigurationMetric) Init() error {
 
 type ConfigurationMetricItem struct {
 	Value     string `yaml:"value"`
-	value     *float64
-	rangeFrom *float64
-	rangeTo   *float64
+	value     null.Float
+	rangeFrom null.Float
+	rangeTo   null.Float
 	Labels    map[string]string `yaml:"labels"`
 }
 
 func (m *ConfigurationMetricItem) parseValue() error {
 	matchMap := createMatchMap(regexpValueRange, &m.Value)
 	if len(matchMap) >= 1 {
-		rangeFrom, err := m.parseFloatFromString(matchMap["from"])
+		rangeFrom, err := parseFloatFromString(matchMap["from"])
 		if err != nil {
 			return err
 		}
 
 		// The "to" capture group is optional. If absent, the metric is constant
 		if matchMap["to"] == "" {
-			m.value = &rangeFrom
+			m.value = rangeFrom
 		} else {
-			rangeTo, err := m.parseFloatFromString(matchMap["to"])
+			rangeTo, err := parseFloatFromString(matchMap["to"])
 			if err != nil {
 				return err
 			}
-			m.rangeFrom = &rangeFrom
-			m.rangeTo = &rangeTo
+			m.rangeFrom = rangeFrom
+			m.rangeTo = rangeTo
 		}
 		return nil
 	} else {
@@ -91,29 +93,17 @@ func (m *ConfigurationMetricItem) parseValue() error {
 	}
 }
 
-func (m *ConfigurationMetricItem) parseFloatFromString(value string) (float64, error) {
-	ret, err := strconv.ParseFloat(value, 64)
-	if err != nil {
-		tmp, err := units.FromHumanSize(value)
-		if err != nil {
-			return 0, err
-		}
-		ret = float64(tmp)
+func (m *ConfigurationMetricItem) generateValue() null.Float {
+	if m.value.Valid {
+		return m.value
+	} else if m.rangeFrom.Valid && m.rangeTo.Valid {
+		result := (rand.Float64() * (m.rangeTo.ValueOrZero() - m.rangeFrom.ValueOrZero())) + m.rangeFrom.ValueOrZero()
+		return null.FloatFrom(result)
 	}
-
-	return ret, nil
+	return null.NewFloat(0, false)
 }
 
-func (m *ConfigurationMetricItem) GenerateValue() float64 {
-	if m.value != nil {
-		return *m.value
-	} else if m.rangeFrom != nil && m.rangeTo != nil {
-		return (rand.Float64() * (*m.rangeTo - *m.rangeFrom)) + *m.rangeFrom
-	}
-	return 0
-}
-
-func loadAndValidateConfiguration(filename string) (*Configuration, error) {
+func LoadAndValidateConfiguration(filename string) (*Configuration, error) {
 	var config Configuration
 	rawBytes, err := ioutil.ReadFile(filename)
 	if err != nil {
@@ -164,8 +154,21 @@ func loadAndValidateConfiguration(filename string) (*Configuration, error) {
 		for i := 0; i < len(validationErrors); i++ {
 			errorMessage += fmt.Sprintf("%v. %v", i+1, validationErrors[i]) + "; "
 		}
-		return nil, &SimulationError{fmt.Sprintf("%v has validation errors: %v", filename, errorMessage)}
+		return nil, &errors.SimulationError{Err: fmt.Sprintf("%v has validation errors: %v", filename, errorMessage)}
 	}
 
 	return &config, nil
+}
+
+func parseFloatFromString(value string) (null.Float, error) {
+	ret, err := strconv.ParseFloat(value, 64)
+	if err != nil {
+		tmp, err := units.FromHumanSize(value)
+		if err != nil {
+			return null.NewFloat(0, false), err
+		}
+		ret = float64(tmp)
+	}
+
+	return null.FloatFrom(ret), nil
 }

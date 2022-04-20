@@ -21,6 +21,12 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+configFiles:
+  libvirt-config.yaml: |
+    {{- .Files.Get "/Users/steinert/workspace/gec_observability/operationscenter-observability/sim-exporter/examples/libvirt_converted.yaml" | nindent 4 -}}
+  node-exporter.yaml: |
+    {{- .Files.Get "/Users/steinert/workspace/gec_observability/operationscenter-observability/sim-exporter/examples/node_exporter.yaml" | nindent 4 -}}
+
 podAnnotations: {}
 
 podSecurityContext:

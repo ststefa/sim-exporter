@@ -8,6 +8,9 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/cobra"
+
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/internal/metrics"
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
 )
 
 var (
@@ -45,16 +48,16 @@ func doServe(cmd *cobra.Command, args []string) {
 		io.WriteString(w, path+"\n")
 	})
 
-	config, err := loadAndValidateConfiguration(args[0])
+	config, err := metrics.LoadAndValidateConfiguration(args[0])
 	if err != nil {
-		panic(&SimulationError{err.Error()})
+		panic(&errors.SimulationError{Err: err.Error()})
 	}
 
-	err = setupMetricsCollection(config)
+	err = metrics.SetupMetricsCollection(config)
 	if err != nil {
-		panic(&SimulationError{err.Error()})
+		panic(&errors.SimulationError{Err: err.Error()})
 	}
-	startMetricsCollection(config, time.Duration(refreshTime))
+	metrics.StartMetricsCollection(config, time.Duration(refreshTime))
 
 	http.Handle("/", helpHandler)
 	http.Handle(path, promhttp.Handler())

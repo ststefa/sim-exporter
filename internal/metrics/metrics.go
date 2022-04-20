@@ -1,4 +1,4 @@
-package cmd
+package metrics
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 )
 
 // Create and setup metrics and collection
-func setupMetricsCollection(config *Configuration) error {
+func SetupMetricsCollection(config *Configuration) error {
 
 	for metricName := range config.Metrics {
 		metric := config.Metrics[metricName]
@@ -75,7 +75,7 @@ func setupMetricsCollection(config *Configuration) error {
 }
 
 // Start async metrics refresh in intervals
-func startMetricsCollection(config *Configuration, refresh time.Duration) {
+func StartMetricsCollection(config *Configuration, refresh time.Duration) {
 	go func() {
 		for {
 			go func() {
@@ -97,13 +97,13 @@ func refreshMetricsCollection(config *Configuration) {
 		for _, metricItem := range metric.Items {
 			switch metric.Type {
 			case "gauge":
-				metric.prometheus.gauge.With(metricItem.Labels).Set(metricItem.GenerateValue())
+				metric.prometheus.gauge.With(metricItem.Labels).Set(metricItem.generateValue().ValueOrZero())
 			case "summary":
-				metric.prometheus.summary.With(metricItem.Labels).Observe(metricItem.GenerateValue())
+				metric.prometheus.summary.With(metricItem.Labels).Observe(metricItem.generateValue().ValueOrZero())
 			case "histogram":
-				metric.prometheus.histogram.With(metricItem.Labels).Observe(metricItem.GenerateValue())
+				metric.prometheus.histogram.With(metricItem.Labels).Observe(metricItem.generateValue().ValueOrZero())
 			case "counter":
-				metric.prometheus.counter.With(metricItem.Labels).Add(metricItem.GenerateValue())
+				metric.prometheus.counter.With(metricItem.Labels).Add(metricItem.generateValue().ValueOrZero())
 			}
 		}
 	}

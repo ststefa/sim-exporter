@@ -1,43 +1,19 @@
 package cmd
 
-import "regexp"
+import (
+	"os"
 
-// Used to indicate handled failure
-type SimulationError struct {
-	err string
-}
+	"github.com/sirupsen/logrus"
+)
 
-func (e *SimulationError) Error() string {
-	return e.err
-}
-
-func isInSlice(searchString string, slice []string) bool {
-	for _, sliceItem := range slice {
-		if sliceItem == searchString {
-			return true
-		}
+var (
+	log = &logrus.Logger{
+		Out:       os.Stderr,
+		Formatter: new(logrus.TextFormatter),
+		Hooks:     make(logrus.LevelHooks),
+		Level:     logrus.InfoLevel,
 	}
-	return false
-}
-func isNotInSlice(searchString string, slice []string) bool {
-	return !isInSlice(searchString, slice)
-}
-
-// Create a dictionary from regex capture groups
-func createMatchMap(regexp *regexp.Regexp, line *string) map[string]string {
-
-	valueList := regexp.FindStringSubmatch(*line)
-	result := make(map[string]string)
-
-	if len(valueList) > 0 {
-		for i, name := range regexp.SubexpNames() {
-			if i != 0 && name != "" {
-				result[name] = valueList[i]
-			}
-		}
-	}
-	return result
-}
+)
 
 // based on https://gist.github.com/lelandbatey/a5c957b537bed39d1d6fb202c3b8de06
 //func setField(item interface{}, fieldName string, value interface{}) error {

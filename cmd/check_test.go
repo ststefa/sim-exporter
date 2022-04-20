@@ -7,16 +7,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestConvert(t *testing.T) {
-	require.PanicsWithError(t, "open no-such-file: no such file or directory", func() { doConvert(convertCmd, []string{"no-such-file"}) })
-	outfile = "/dev/null"
-	require.NotPanics(t, func() { doConvert(convertCmd, []string{"testdata/libvirt_scrape.txt"}) })
-}
-
-func TestVersion(t *testing.T) {
-	require.NotPanics(t, func() { doVersion(versionCmd, []string{}) })
-
-}
 func TestCheck(t *testing.T) {
 	require.PanicsWithError(t, "open no-such-file: no such file or directory", func() { doCheck(convertCmd, []string{"no-such-file"}) })
 	require.NotPanics(t, func() { doCheck(convertCmd, []string{"testdata/node_exporter.yaml"}) })

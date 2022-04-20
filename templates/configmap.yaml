@@ -5,7 +5,6 @@ metadata:
   labels:
   {{- include "sim-exporter.selectorLabels" . | nindent 8 }}
 data:
-  libvirt-config.yaml: |
-    {{- .Files.Get "examples/libvirt_converted.yaml" | nindent 4 -}}
-  node-exporter.yaml: |
-    {{- .Files.Get "examples/node_exporter.yaml" | nindent 4 -}}
+    {{- with .Values.configFiles }}
+    {{- tpl (printf "{{%s}}" .) . }}
+    {{- end }}

@@ -3,7 +3,6 @@ package cmd
 import (
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
-	"os"
 )
 
 var (
@@ -14,12 +13,6 @@ var (
 		Use:   "sim-exporter",
 		Short: "Export synthetic prometheus metrics",
 		Long:  "Produce synthetic metrics usable as a mock for prometheus scrape-testing.",
-	}
-	log = &logrus.Logger{
-		Out:       os.Stderr,
-		Formatter: new(logrus.TextFormatter),
-		Hooks:     make(logrus.LevelHooks),
-		Level:     logrus.InfoLevel,
 	}
 )
 

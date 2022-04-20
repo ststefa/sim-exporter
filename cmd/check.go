@@ -3,6 +3,8 @@ package cmd
 import (
 	"fmt"
 
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/internal/metrics"
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -20,14 +22,14 @@ func init() {
 
 // Any undesired but handled outcome is signaled by panicking with SimulationError
 func doCheck(cmd *cobra.Command, args []string) {
-	config, err := loadAndValidateConfiguration(args[0])
+	config, err := metrics.LoadAndValidateConfiguration(args[0])
 	if err != nil {
-		panic(&SimulationError{err.Error()})
+		panic(&errors.SimulationError{Err: err.Error()})
 	}
 
-	err = setupMetricsCollection(config)
+	err = metrics.SetupMetricsCollection(config)
 	if err != nil {
-		panic(&SimulationError{err.Error()})
+		panic(&errors.SimulationError{Err: err.Error()})
 	}
 
 	fmt.Printf("%v validated successfully\n", args[0])

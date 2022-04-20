@@ -7,6 +7,8 @@ import (
 	"reflect"
 
 	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/cmd"
+	simerrors "git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
+
 	"github.com/sirupsen/logrus"
 )
 
@@ -21,7 +23,7 @@ var (
 
 func panicExit() {
 	if r := recover(); r != nil {
-		var simErr *cmd.SimulationError
+		var simErr *simerrors.SimulationError
 		if errors.As(r.(error), &simErr) {
 			fmt.Fprintf(os.Stderr, "Simulation error: %v\n", r)
 		} else {
