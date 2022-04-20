@@ -24,4 +24,5 @@ FROM alpine
 WORKDIR /
 COPY --from=build /app/build/sim-exporter .
 COPY --from=build /app/build/examples examples
-CMD ["/sim-exporter"]
+ENTRYPOINT ["/sim-exporter"]
+CMD ["help"]

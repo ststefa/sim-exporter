@@ -6,4 +6,5 @@ FROM alpine
 WORKDIR /
 COPY build/sim-exporter .
 COPY build/examples/ examples
-CMD ["/sim-exporter"]
+ENTRYPOINT ["/sim-exporter"]
+CMD ["help"]
