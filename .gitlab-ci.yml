@@ -1,35 +1,39 @@
 variables:
   # General ALM debugging, causes "set -x" behaviour in ALM shell scripts as well as additional debug routines
-  ALM_DEBUG: "true"
+  ALM_DEBUG: 'true'
 
   # Default: "make --trace". We need to specify a target because the default
   # target is meant for local development
-  GO_BUILD_COMMAND: "make alm_build"
-  GO_TEST_COMMAND: "go clean -testcache && go test ./... -coverprofile=coverage.out"
+  GO_BUILD_COMMAND: 'make alm_build'
+  GO_TEST_COMMAND: 'go clean -testcache && go test ./... -coverprofile=coverage.out'
 
-  HELM_CHART_PATH: "deployment"
+  # ALM expects one or more directories below (one dir per chart)
+  HELM_CHART_PATH: 'deployment'
+
+  # Helm unit tests considered bloat ;)
+  DISABLE_HELM_UNIT_TEST_JOB: 'true'
 
   # Disabling SonarQube code quality checks. Saves ~10s but should not
   # usually be disabled
-  #DISABLE_SONAR: "true"
+  #DISABLE_SONAR: 'true'
 
   # Force version bumps for changes on default branch instead of just bumping
   # on non-default branches
-  FORCE_MASTER_VERSION_BUMPS: "true"
+  FORCE_MASTER_VERSION_BUMPS: 'true'
 
   # Set the default git branch (default: "master")
-  MAIN_BRANCH: "main"
+  MAIN_BRANCH: 'main'
 
   # Disable irrelevant build logic
-  DISABLE_MAVEN_DEPLOY: "true"
-  DISABLE_GRADLE_DEPLOY: "true"
-  DISABLE_PYTHON_DEPLOY: "true"
-  DISABLE_SETUPTOOLS_DEPLOY: "true"
+  DISABLE_MAVEN_DEPLOY: 'true'
+  DISABLE_GRADLE_DEPLOY: 'true'
+  DISABLE_PYTHON_DEPLOY: 'true'
+  DISABLE_SETUPTOOLS_DEPLOY: 'true'
 
 
 include:
-  project: "alm/common-infrastructure/gitlab-ci-templates"
-  ref: master
+  project: alm/common-infrastructure/gitlab-ci-templates
+  ref: 'master'
   file: '.go-docker-helm.yml'
 
 # Analyze package-and-publish phase (can be applied to any phase)
