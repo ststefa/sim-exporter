@@ -1,20 +1,17 @@
 variables:
-  # General ALM debugging, causes "set -x" behaviour in ALM shell scripts
+  # General ALM debugging, causes "set -x" behaviour in ALM shell scripts as well as additional debug routines
   ALM_DEBUG: "true"
 
   # Default: "make --trace". We need to specify a target because the default
   # target is meant for local development
   GO_BUILD_COMMAND: "make alm_build"
+  GO_TEST_COMMAND: "go clean -testcache && go test ./... -coverprofile=coverage.out"
 
-  # Disable unit tests because they require a ./pkg/... structure
-  #DISABLE_GO_UNIT_TESTS: "true"
+  HELM_CHART_PATH: "deployment/chart"
 
   # Disabling SonarQube code quality checks. Saves ~10s but should not
   # usually be disabled
   #DISABLE_SONAR: "true"
-
-  # Suggested by https://confluence.gec.io/display/SOFT/ALM+Build+Usage+Guide
-  #DISABLE_HELM_INTEGRATION_TEST_JOB: "true"
 
   # Force version bumps for changes on default branch instead of just bumping
   # on non-default branches
@@ -33,19 +30,15 @@ variables:
 include:
   project: "alm/common-infrastructure/gitlab-ci-templates"
   ref: master
-  file: '.go-docker.yml'
+  file: '.go-docker-helm.yml'
 
-# Analyze package-and-publish phase
-docker-debug:
-  stage: package-and-publish
-
-  extends: .base-job
-
-  script:
-    - "env"
-    - "echo pwd:$(pwd)"
-    - "ls -la /"
-    - "find /build* -type f"
-    - "cd /builds/operations-center/operationscenter-observability/observability-cli"
-    - "ls -la"
-    - "find build -ls"
+# Analyze package-and-publish phase (can be applied to any phase)
+#docker-debug:
+#  stage: package-and-publish
+#  extends: .base-job
+#  script:
+#    - "env"
+#    - "ls -la /"
+#    - "echo pwd:$(pwd)"
+#    - "echo id:$(id)"
+#    - "find . -ls"
