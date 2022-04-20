@@ -42,7 +42,7 @@ metrics:
     - flavor
     - instance_name
     items:
-    - value: 103-143
+    - value: 123
       labels:
         flavor: m1.medium
         instance_name: server1
@@ -65,7 +65,11 @@ metrics:
         planet: mars
 ```
 
-The values will be randomly chosen based ob the supplied parameters. They can be either constant (e.g. 123) or a range (e.g. 12-34). Ranged values change over time in the simulator. Constants do not.
+The values will be randomly chosen based ob the supplied parameters. They can be either constant (e.g. 123) or a range (e.g. 274-638). Ranged values change over time in the simulator. Constant values do not.
+
+Deviation is calculated as a random percentage towards the scrape value with a maximum of maxdeviation. E.g. if the value in the scrape is 100 and maxdeviation is set to 50, then the calculated range might be anything from 100-100 (deviation 0, in which case the value is turned into a constant) to 50-150 (deviation 50).
+
+As the simulator does not have any idea about the nature of the value this might lead to undesired results, especially for percentage values which might range below 0 or above 100. Manual tweaking of the converted config is required in this case.
 
 ### check
 
@@ -82,4 +86,4 @@ INFO[0000] Serving metrics on *:1234/showme
 
 ## Helm Chart
 
-The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes >=1.19 environment. The configuration file is mounted as a ConfigMap. Supply your own input by changing
+The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes >=1.19 environment. Multiple configuration files can be mounted as a ConfigMap. Supply your own input by changing `.Values.configFiles`. One of the configurations is then chosen with `.Values.activeConfig` and served over `http://*:8080/metrics>`.

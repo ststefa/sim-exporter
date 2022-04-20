@@ -52,6 +52,7 @@ func stripQuotes(s string) string {
 	return s
 }
 
+// See README.md/Usage/convert for a description of the range calculation
 func generateValueRange(value string, deviation int) (string, error) {
 	formatString := func(val float64) string {
 		if val < 10000 {
