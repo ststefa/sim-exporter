@@ -7,7 +7,7 @@ variables:
   GO_BUILD_COMMAND: "make alm_build"
   GO_TEST_COMMAND: "go clean -testcache && go test ./... -coverprofile=coverage.out"
 
-  HELM_CHART_PATH: "deployment/chart"
+  HELM_CHART_PATH: "deployment"
 
   # Disabling SonarQube code quality checks. Saves ~10s but should not
   # usually be disabled
