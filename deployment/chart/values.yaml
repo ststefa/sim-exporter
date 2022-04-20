@@ -1,25 +1,16 @@
 # Default values for sim-exporter.
-# Declare variables to be passed into your templates.
 
 replicaCount: 1
 
 image:
-  repository: docker.io/ststefa/sim-exporter
+  repository: artifactory.intern.gec.io/docker-release-local/sim-exporter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "latest"
+  #tag: "latest"
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
-
-serviceAccount:
-  create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: ""
 
 # Creates a configmap from local file contents. The resulting ConfigMap has keys
 # for any $(basename <configFile>) (i.e., the path is stripped)
@@ -27,11 +18,18 @@ configFiles:
   - examples/libvirt_converted.yaml
   - examples/node_exporter.yaml
 
-# Which entry from .Values.configFiles will be used
-activeConfig: node_exporter.yaml
+# Specify item from .Values.configFiles that will be served
+activeConfig: libvirt_converted.yaml
 
 # Interval in which the values are mutated
 refreshTime: 15s
+
+serviceAccount:
+  create: true
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
 
 podAnnotations: {}
 

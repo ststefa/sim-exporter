@@ -28,7 +28,7 @@ spec:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          command: ['/sim-exporter','serve','--refresh','{{ .Values.refreshTime }}','/config/{{ .Values.activeConfig }}']
+          command: ['/sim-exporter', 'serve','--refresh', '{{ .Values.refreshTime }}', '/config/{{ .Values.activeConfig }}']
           volumeMounts:
           - name: config-volume
             mountPath: /config
