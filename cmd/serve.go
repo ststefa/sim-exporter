@@ -43,9 +43,11 @@ func init() {
 // Any undesired but handled outcome is signaled by panicking with SimulationError
 func doServe(cmd *cobra.Command, args []string) {
 	helpHandler := http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
-		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
-		io.WriteString(w, "Available paths:\n")
-		io.WriteString(w, path+"\n")
+		w.Header().Set("Content-Type", "text/html; charset=utf-8")
+		io.WriteString(w, "<html><body>\n")
+		io.WriteString(w, "<h1>Available paths</h1>\n")
+		io.WriteString(w, "<a href='"+path+"'>"+path+"</a>\n")
+		io.WriteString(w, "</body></html>\n")
 	})
 
 	config, err := metrics.LoadAndValidateConfiguration(args[0])
