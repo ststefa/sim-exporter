@@ -21,11 +21,17 @@ serviceAccount:
   # If not set and create is true, a name is generated using the fullname template
   name: ""
 
+# Creates a configmap from local file contents. The resulting ConfigMap has keys
+# for any $(basename <configFile>) (i.e., the path is stripped)
 configFiles:
-  libvirt-config.yaml: |
-    {{- .Files.Get "/Users/steinert/workspace/gec_observability/operationscenter-observability/sim-exporter/examples/libvirt_converted.yaml" | nindent 4 -}}
-  node-exporter.yaml: |
-    {{- .Files.Get "/Users/steinert/workspace/gec_observability/operationscenter-observability/sim-exporter/examples/node_exporter.yaml" | nindent 4 -}}
+  - examples/libvirt_converted.yaml
+  - examples/node_exporter.yaml
+
+# Which entry from .Values.configFiles will be used
+activeConfig: node_exporter.yaml
+
+# Interval in which the values are mutated
+refreshTime: 15s
 
 podAnnotations: {}
 

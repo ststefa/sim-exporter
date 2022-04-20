@@ -3,8 +3,9 @@ kind: ConfigMap
 metadata:
   name: {{ include "sim-exporter.fullname" . }}-config
   labels:
-  {{- include "sim-exporter.selectorLabels" . | nindent 8 }}
+  {{- include "sim-exporter.selectorLabels" . | nindent 4 }}
 data:
-    {{- with .Values.configFiles }}
-    {{- tpl (printf "{{%s}}" .) . }}
-    {{- end }}
+  {{- range .Values.configFiles }}
+  {{ base . }}: |-
+    {{- $.Files.Get . | nindent 4 }}
+  {{- end }}
