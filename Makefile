@@ -1,7 +1,11 @@
 # Buildfile for both
-# - Local development (targets "local...")
-# - ALM pipeline (targets "alm...")
+# - Local development
+# - ALM pipeline (prefixed with "alm_")
 
+# phony targets are executed unconditionally, see https://docs.w3cub.com/gnu_make/phony-targets#Phony-Targets
+.PHONY: test examples local_build local_image clean
+
+# Run this if no explicit target is specified
 .DEFAULT_GOAL := help
 
 # Get version from auto-bumped gitlab ALM version.txt file
@@ -19,21 +23,26 @@ ME := ststefa
 help:   ## Show this help
 	@grep -h "##" $(MAKEFILE_LIST) | grep -v grep | sed 's/:.*##/:/'
 
-local_build: _check_netrc _build ## Create build artifacts in build/ directory
-
-local_test:  ## Run tests
+test:  ## Run tests
 	go test ./...
 
-local_image: _check_netrc   ## Create docker image locally (mainly for development purpose)
+examples:  ## Create examples/*yaml from examples/*txt
+	go run . convert -i 5m-1h -o examples/collectd_converted.yaml examples/collectd_scrape.txt
+	go run . convert -i 5m-1h -o examples/libvirt_converted.yaml examples/libvirt_scrape.txt
+	cp examples/*.yaml deployment/chart/examples
+
+build: _check_netrc _build ## Create build artifacts in build/ directory
+
+image: _check_netrc   ## Create docker image locally (mainly for development purpose)
 	docker build -f local.Dockerfile --secret id=netrc,src=${HOME}/.netrc --tag $(EXEC_NAME) --progress=plain .
 
 my_multiarch_image: _check_netrc   ## Create multi-arch docker image and push it to dockerhub (dev workaround, only usable for $ME). Note that multi-arch builds require additional docker setup!
 	docker buildx build --secret id=netrc,src=${HOME}/.netrc --platform linux/amd64,linux/arm64,linux/arm/v7 -t $(ME)/$(EXEC_NAME) --push -f local.Dockerfile --progress=plain .
 
-local_image_test:  ## Test the docker image
+image_test:  ## Test the docker image
 	docker run --rm $(EXEC_NAME)
 
-local_clean: ## Remove build directory
+clean: ## Remove build directory
 	rm -vfr build
 
 alm_build: _build ## Build executable in GEC ALM CI pipeline

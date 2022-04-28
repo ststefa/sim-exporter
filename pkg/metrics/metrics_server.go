@@ -9,20 +9,16 @@ import (
 )
 
 // Create and setup metrics and collection
-func SetupMetricsCollection(config *Configuration) error {
+func SetupMetricsCollection(config *Collection) error {
 
-	for metricName := range config.Metrics {
-		metric := config.Metrics[metricName]
-		err := metric.Init()
-		if err != nil {
-			return err
-		}
+	for i := range config.Metrics {
+		metric := config.Metrics[i]
 
 		switch metric.Type {
 		case "gauge":
 			vec := prometheus.NewGaugeVec(
 				prometheus.GaugeOpts{
-					Name: metricName,
+					Name: metric.Name,
 					Help: metric.Help,
 				},
 				metric.Labels,
@@ -33,7 +29,7 @@ func SetupMetricsCollection(config *Configuration) error {
 		case "counter":
 			vec := prometheus.NewCounterVec(
 				prometheus.CounterOpts{
-					Name: metricName,
+					Name: metric.Name,
 					Help: metric.Help,
 				},
 				metric.Labels,
@@ -44,7 +40,7 @@ func SetupMetricsCollection(config *Configuration) error {
 		case "summary":
 			vec := prometheus.NewSummaryVec(
 				prometheus.SummaryOpts{
-					Name: metricName,
+					Name: metric.Name,
 					Help: metric.Help,
 				},
 				metric.Labels,
@@ -56,7 +52,7 @@ func SetupMetricsCollection(config *Configuration) error {
 		case "histogram":
 			vec := prometheus.NewHistogramVec(
 				prometheus.HistogramOpts{
-					Name: metricName,
+					Name: metric.Name,
 					Help: metric.Help,
 				},
 				metric.Labels,
@@ -65,57 +61,72 @@ func SetupMetricsCollection(config *Configuration) error {
 			metric.prometheus.histogram = vec
 			prometheus.MustRegister(vec)
 		default:
-			return fmt.Errorf("metric %v: type %q not defined", metricName, metric.Type)
+			return fmt.Errorf("metric %v: type %q not defined", i, metric.Type)
 		}
 
-		config.Metrics[metricName] = metric
+		config.Metrics[i] = metric
 
 	}
 	return nil
 }
 
 // Start async metrics refresh in intervals
-func StartMetricsCollection(config *Configuration, refresh time.Duration) {
+func StartMetricsCollection(c *Collection, refresh time.Duration) {
+	startTime := time.Now()
 	go func() {
 		for {
-			go func() {
-				refreshMetricsCollection(config)
+			go func() error {
+				err := refreshMetricsCollection(c, startTime)
+				if err != nil {
+					return err
+				}
+				return nil
 			}()
 			time.Sleep(refresh)
 		}
 	}()
 }
 
-func refreshMetricsCollection(config *Configuration) {
+func refreshMetricsCollection(c *Collection, startTime time.Time) error {
 	var wg sync.WaitGroup
 
-	callbackChannel := make(chan func())
+	callbackChannel := make(chan func() error)
 
-	for metricName := range config.Metrics {
-		metric := config.Metrics[metricName]
+	for i := range c.Metrics {
+		metric := c.Metrics[i]
 
 		for _, metricItem := range metric.Items {
+			newVal, _ := metricItem.generateValue(startTime)
+			//TODO error handling not working. Should not abort refresh process
+			//if err != nil {
+			//	return err
+			//}
+
 			switch metric.Type {
 			case "gauge":
-				metric.prometheus.gauge.With(metricItem.Labels).Set(metricItem.generateValue().ValueOrZero())
+				metric.prometheus.gauge.With(metricItem.Labels).Set(newVal)
 			case "summary":
-				metric.prometheus.summary.With(metricItem.Labels).Observe(metricItem.generateValue().ValueOrZero())
+				metric.prometheus.summary.With(metricItem.Labels).Observe(newVal)
 			case "histogram":
-				metric.prometheus.histogram.With(metricItem.Labels).Observe(metricItem.generateValue().ValueOrZero())
+				metric.prometheus.histogram.With(metricItem.Labels).Observe(newVal)
 			case "counter":
-				metric.prometheus.counter.With(metricItem.Labels).Add(metricItem.generateValue().ValueOrZero())
+				metric.prometheus.counter.With(metricItem.Labels).Add(newVal)
 			}
 		}
 	}
 
 	go func() {
-		var callbackList []func()
+		var callbackList []func() error
 		for callback := range callbackChannel {
 			callbackList = append(callbackList, callback)
 		}
 
 		for _, callback := range callbackList {
-			callback()
+			err := callback()
+			if err != nil {
+				fmt.Printf("error: %v", err)
+			}
+
 		}
 
 		log.Debug("run: finished")
@@ -123,4 +134,6 @@ func refreshMetricsCollection(config *Configuration) {
 
 	wg.Wait()
 	close(callbackChannel)
+
+	return nil
 }

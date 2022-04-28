@@ -1,45 +1,71 @@
 version: v1
 
 metrics:
-  node_uname_info:
+  - name: node_uname_info
     help: Node info
     type: gauge
     labels: [nodename]
     items:
-    - value: 1
+    - min: 1
+      max: 1
+      func: rand
+      interval: 10m
       labels: {nodename: "SIMULATOR"}
 
-  node_filesystem_size_bytes:
+  - name: node_filesystem_size_bytes
     help: Filesystem space available to non-root users in bytes.
     type: gauge
     labels: [device, fstype, mountpoint]
     items:
-    - value: 3TB
+    - min: 2e12
+      max: 3e12
+      func: rand
+      interval: 10m
       labels: {device: "/dev/sda1", fstype: "ext4", mountpoint: "/"}
-    - value: 2TB
+    - min: 500e9
+      max: 2e12
+      func: asc
+      interval: 2m
       labels: {device: "/dev/sdb1", fstype: "ext4", mountpoint: "/"}
 
-  node_filesystem_free_bytes:
+  - name: node_filesystem_free_bytes
     help: Filesystem free space in bytes.
     type: gauge
     labels: [device, fstype, mountpoint]
     items:
-    - value: 100-500MB
+    - min: 50e6
+      max: 200e6
+      func: rand
+      interval: 1h
       labels: {device: "/dev/sda1", fstype: "ext4", mountpoint: "/"}
-    - value: 100-500MB
+    - min: 100e6
+      max: 500e6
+      func: desc
+      interval: 2h
       labels: {device: "/dev/sdb1", fstype: "ext4", mountpoint: "/"}
 
-  node_entropy_available_bits:
+  - name: node_entropy_available_bits
     type: gauge
     items:
-    - value: 100-500
+    - min: 1000
+      max: 5000
+      func: sin
+      interval: 10m
 
-  node_memory_MemTotal_bytes:
+  - name: node_memory_MemTotal_bytes
     type: gauge
+    func: rand
     items:
-    - value: 24GB
+    - min: 14e9
+      max: 24e9
+      func: rand
+      interval: 1m
 
-  node_memory_Active_bytes:
+  - name: node_memory_Active_bytes
     type: gauge
+    func: asc
     items:
-    - value: 22GB-23GB
+    - min: 12e9
+      max: 23e9
+      func: desc
+      interval: 10m
