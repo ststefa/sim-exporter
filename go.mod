@@ -3,12 +3,10 @@ module git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability
 go 1.18
 
 require (
-	github.com/docker/go-units v0.4.0
 	github.com/prometheus/client_golang v1.12.1
 	github.com/sirupsen/logrus v1.8.1
 	github.com/spf13/cobra v1.4.0
 	github.com/stretchr/testify v1.7.1
-	gopkg.in/guregu/null.v4 v4.0.0
 	gopkg.in/yaml.v2 v2.4.0
 )
 

@@ -27,8 +27,9 @@ func panicExit() {
 		if errors.As(r.(error), &simErr) {
 			fmt.Fprintf(os.Stderr, "Simulation error: %v\n", r)
 		} else {
-			log.Errorf("unexpected %s: %q\n", reflect.TypeOf(r).Elem(), r)
+			fmt.Fprintf(os.Stderr, "unexpected %s: %q\n", reflect.TypeOf(r).Elem(), r)
 		}
+		os.Exit(1)
 	}
 }
 

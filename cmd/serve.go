@@ -1,43 +1,66 @@
 package cmd
 
 import (
+	"fmt"
 	"io"
 	"net/http"
+	"regexp"
 	"strconv"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/cobra"
 
-	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/internal/metrics"
 	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
+	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/metrics"
 )
 
 var (
-	// Default listening port
-	port = 8080
+	port_help = "TCP port on which the exporter should listen"
+	port      = 8080
 
-	// Default metrics URI
-	path = "/metrics"
+	path_help = "URI (with leading '/') on which the exporter should listen"
+	path      = "/metrics"
 
-	// Default metrics refresh time
-	refreshTime, _ = time.ParseDuration("15s")
+	refreshTime_help = "After how many seconds the metrics are refreshed"
+	refreshTime, _   = time.ParseDuration("15s")
 
 	serveCmd = &cobra.Command{
-		Use:   "serve <file.yaml>",
-		Short: "Serve simulated prometheus metrics defined in <file.yaml>",
-		Long:  "Start the exporter and serve prometheus metrics read from <file.yaml> to the configured port and path.",
-		Args:  cobra.ExactArgs(1),
-		Run:   doServe,
+		Use:     "serve <file.yaml>",
+		Short:   "Serve simulated prometheus metrics defined in <file.yaml>",
+		Long:    "Start the exporter and serve prometheus metrics read from <file.yaml> to the configured port and path.",
+		Args:    cobra.ExactArgs(1),
+		PreRunE: validateServe,
+		Run:     doServe,
 	}
 )
 
 func init() {
-	serveCmd.PersistentFlags().IntVar(&port, "port", port, "TCP port on which the exporter should listen")
-	serveCmd.PersistentFlags().StringVar(&path, "path", path, "URI (with leading '/') on which the exporter should listen")
-	serveCmd.PersistentFlags().DurationVar(&refreshTime, "refresh", refreshTime, "After how many seconds the metrics are refreshed")
+	serveCmd.PersistentFlags().IntVarP(&port, "port", "p", port, port_help)
+	serveCmd.PersistentFlags().StringVar(&path, "path", path, path_help)
+	serveCmd.PersistentFlags().DurationVarP(&refreshTime, "refresh", "r", refreshTime, refreshTime_help)
 
 	rootCmd.AddCommand(serveCmd)
+}
+
+func validateServe(cmd *cobra.Command, args []string) error {
+
+	// Validate path
+	re, err := regexp.Compile(`^(/.+)+`)
+	if err != nil {
+		return err
+	}
+
+	if !re.MatchString(path) {
+		return fmt.Errorf("path %q does not match required regex %q", path, re.String())
+	}
+
+	// Validate port
+	if port < 1 || port > 65535 {
+		return fmt.Errorf("invalid port %q. Must be in range 1-65535", strconv.FormatInt(int64(port), 10))
+	}
+
+	return nil
 }
 
 // Any undesired but handled outcome is signaled by panicking with SimulationError
@@ -50,21 +73,20 @@ func doServe(cmd *cobra.Command, args []string) {
 		io.WriteString(w, "</body></html>\n")
 	})
 
-	config, err := metrics.LoadAndValidateConfiguration(args[0])
+	collection, err := metrics.FromYamlFile(args[0])
 	if err != nil {
 		panic(&errors.SimulationError{Err: err.Error()})
 	}
 
-	err = metrics.SetupMetricsCollection(config)
+	err = metrics.SetupMetricsCollection(collection)
 	if err != nil {
 		panic(&errors.SimulationError{Err: err.Error()})
 	}
-	metrics.StartMetricsCollection(config, time.Duration(refreshTime))
+	metrics.StartMetricsCollection(collection, time.Duration(refreshTime))
 
 	http.Handle("/", helpHandler)
 	http.Handle(path, promhttp.Handler())
 
 	log.Printf("Serving metrics on *:%d%v", port, path)
 	log.Fatal(http.ListenAndServe(":"+strconv.Itoa(port), nil))
-
 }

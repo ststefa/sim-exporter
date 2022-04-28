@@ -14,7 +14,7 @@ var (
 	versionCmd = &cobra.Command{
 		Use:   "version",
 		Short: "Print version",
-		Long:  "Show the version of exporter",
+		Long:  "Show the version of the exporter",
 		Args:  cobra.NoArgs,
 		Run:   doVersion,
 	}
