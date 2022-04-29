@@ -2,6 +2,7 @@ package metrics
 
 import (
 	"io/ioutil"
+	"math"
 	"os"
 	"reflect"
 	"testing"
@@ -760,6 +761,192 @@ func TestMetricItem_generateValue(t *testing.T) {
 			}
 			if got != tt.want {
 				t.Errorf("generateValue() got = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestMetricItem_generateValue1(t *testing.T) {
+	type fields struct {
+		Min      float64
+		Max      float64
+		Func     string
+		Interval time.Duration
+	}
+	type args struct {
+		start time.Time
+	}
+	tests := []struct {
+		name    string
+		fields  fields
+		args    args
+		want    float64
+		wantErr bool
+	}{
+		//{
+		//	name: "invalid func",
+		//	fields: fields{
+		//		Min:      10,
+		//		Max:      20,
+		//		Func:     "foo",
+		//		Interval: time.Duration(1*time.Minute + 1*time.Millisecond),
+		//	},
+		//	args:    args{start: time.Now().Add(time.Duration(-1 * time.Minute))},
+		//	wantErr: true,
+		//},
+		{
+			name: "valid desc intvl end",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "desc",
+				Interval: time.Duration(1*time.Minute + 1*time.Millisecond),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-1 * time.Minute))},
+			want:    10,
+			wantErr: false,
+		},
+		{
+			name: "valid desc intvl mid",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "desc",
+				Interval: time.Duration(1 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-30 * time.Second))},
+			want:    15,
+			wantErr: false,
+		},
+		{
+			name: "valid desc intvl start",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "desc",
+				Interval: time.Duration(1 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-1 * time.Minute))},
+			want:    20,
+			wantErr: false,
+		},
+		{
+			name: "valid asc intvl end",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "asc",
+				Interval: time.Duration(1*time.Minute + 1*time.Millisecond),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-1 * time.Minute))},
+			want:    20,
+			wantErr: false,
+		},
+		{
+			name: "valid asc intvl mid",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "asc",
+				Interval: time.Duration(1 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-30 * time.Second))},
+			want:    15,
+			wantErr: false,
+		},
+		{
+			name: "valid asc intvl start",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "asc",
+				Interval: time.Duration(10 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-10 * time.Minute))},
+			want:    10,
+			wantErr: false,
+		},
+		{
+			name: "valid sin intvl 3/4",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "sin",
+				Interval: time.Duration(100 * time.Second),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-75 * time.Second))},
+			want:    10,
+			wantErr: false,
+		},
+		{
+			name: "valid sin intvl 1/2",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "sin",
+				Interval: time.Duration(100 * time.Second),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-50 * time.Second))},
+			want:    15,
+			wantErr: false,
+		},
+		{
+			name: "valid sin intvl 1/4",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "sin",
+				Interval: time.Duration(100 * time.Second),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-25 * time.Second))},
+			want:    20,
+			wantErr: false,
+		},
+		{
+			name: "valid sin intvl start",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "sin",
+				Interval: time.Duration(1 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-1 * time.Minute))},
+			want:    15,
+			wantErr: false,
+		},
+		{
+			name: "valid rand",
+			fields: fields{
+				Min:      10,
+				Max:      20,
+				Func:     "rand",
+				Interval: time.Duration(1 * time.Minute),
+			},
+			args:    args{start: time.Now().Add(time.Duration(-10 * time.Minute))},
+			wantErr: false,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			i := &MetricItem{
+				Min:      tt.fields.Min,
+				Max:      tt.fields.Max,
+				Func:     tt.fields.Func,
+				Interval: tt.fields.Interval,
+			}
+			got, err := i.generateValue(tt.args.start)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("generateValue() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if tt.fields.Func == "rand" {
+				if got < tt.fields.Min || got > tt.fields.Max {
+					t.Errorf("generateValue() got = %v, want %v<got<%v", got, tt.fields.Min, tt.fields.Max)
+				}
+			} else {
+				if math.Round(got) != tt.want {
+					t.Errorf("generateValue() got = %v, want %v", got, tt.want)
+				}
 			}
 		})
 	}
