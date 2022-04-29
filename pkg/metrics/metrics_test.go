@@ -729,49 +729,6 @@ func TestMetricItem_generateValue(t *testing.T) {
 		Max      float64
 		Func     string
 		Interval time.Duration
-		Labels   map[string]string
-		parent   *Metric
-	}
-	type args struct {
-		start time.Time
-	}
-	tests := []struct {
-		name    string
-		fields  fields
-		args    args
-		want    float64
-		wantErr bool
-	}{
-		// TODO: Add test cases.
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			i := &MetricItem{
-				Min:      tt.fields.Min,
-				Max:      tt.fields.Max,
-				Func:     tt.fields.Func,
-				Interval: tt.fields.Interval,
-				Labels:   tt.fields.Labels,
-				parent:   tt.fields.parent,
-			}
-			got, err := i.generateValue(tt.args.start)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("generateValue() error = %v, wantErr %v", err, tt.wantErr)
-				return
-			}
-			if got != tt.want {
-				t.Errorf("generateValue() got = %v, want %v", got, tt.want)
-			}
-		})
-	}
-}
-
-func TestMetricItem_generateValue1(t *testing.T) {
-	type fields struct {
-		Min      float64
-		Max      float64
-		Func     string
-		Interval time.Duration
 	}
 	type args struct {
 		start time.Time

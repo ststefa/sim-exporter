@@ -17,7 +17,7 @@ variables:
   # usually be disabled
   #DISABLE_SONAR: 'true'
 
-  # Force version bumps for master branch as by default ALM bumps $INTEGRATION_BRANCH - develop
+  # Force version bumps for master branch as by default ALM bumps $INTEGRATION_BRANCH = develop. The main branch should usually only be changed by merging from the develop branch.
   #FORCE_MASTER_VERSION_BUMPS: 'true'
 
   # Set the default git branch (default: "master")
@@ -32,6 +32,7 @@ variables:
 
 include:
   project: alm/common-infrastructure/gitlab-ci-templates
+  # use custom branch of alm. Should usually be set to "master"
   ref: 'develop'
   file: '.go-docker-helm.yml'
 

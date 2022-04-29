@@ -173,7 +173,7 @@ func (i *MetricItem) ParentMetric() *Metric {
 	return i.parent
 }
 
-// Compute duration since start modulo interval
+// Compute duration since start modulo interval (i.e. the interval repeats endlessly)
 func interval(start time.Time, interval time.Duration) (time.Duration, error) {
 	result := time.Duration(0)
 	passed := int64(time.Since(start))
