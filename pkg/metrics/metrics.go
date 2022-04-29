@@ -216,7 +216,7 @@ func (i *MetricItem) generateValue(start time.Time) (float64, error) {
 			{
 				intervalFactor := (float64(elapsed) / float64(i.Interval)) * 2 * math.Pi // 0 at start of interval, 2*pi at end
 				mean := (i.Min + i.Max) / 2
-				result = mean + ((i.Max - i.Min) * math.Sin(intervalFactor))
+				result = mean + (((i.Max - i.Min) / 2) * math.Sin(intervalFactor))
 			}
 		default:
 			{
