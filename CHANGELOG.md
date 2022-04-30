@@ -2,7 +2,7 @@
 
 Due to the auto-versioning process of the CI, the versions are not strictly sequential. Some minor versions might be missing. However, they should not contain any notable changes.
 
-## 1.0.5 (2022-04-29)
+## 1.0.6 (2022-04-30)
 
 FIX: local image build
 
