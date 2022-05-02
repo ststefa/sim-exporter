@@ -7,10 +7,6 @@ import (
 
 	"gopkg.in/yaml.v2"
 
-	"gopkg.in/yaml.v2"
-
-	"gopkg.in/yaml.v2"
-
 	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
 	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/metrics"
 
