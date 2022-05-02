@@ -2,6 +2,10 @@
 
 Due to the auto-versioning process of the CI, the versions are not strictly sequential. Some minor versions might be missing. However, they should not contain any notable changes.
 
+## 1.0.8 (2022-05-02) #REMOVEME
+
+minor doc
+
 ## 1.0.7 (2022-05-02)
 
 FIX: local image build
