@@ -73,12 +73,50 @@ func Test_convertScrapeToConfig(t *testing.T) {
 		wantErr bool
 	}{
 		{
+			name: "Percent value",
+			args: args{scrapeLines: &[]string{
+				`# HELP my_percent_metric This is a percent metric`,
+				`# TYPE my_percent_metric gauge`,
+				`my_percent_metric{foo="lion",instance="bbb"} 1`},
+			},
+			wantErr: true,
+		},
+		{
+			name: "Invalid value",
+			args: args{scrapeLines: &[]string{
+				`# HELP my_metric This is a metric`,
+				`# TYPE my_metric gauge`,
+				`my_metric{foo="lion",instance="bbb"} abc`},
+			},
+			wantErr: false,
+		},
+		{
+			name: "Double HELP",
+			args: args{scrapeLines: &[]string{
+				`# HELP my_metric This is a metric`,
+				`# HELP my_metric Duplicated by error`,
+				`# TYPE my_metric gauge`,
+				`my_metric{foo="lion",instance="aaa"} 1`,
+				`my_metric{foo="lion",instance="bbb"} 2`},
+			},
+			wantErr: true,
+		},
+		{
+			name: "Internal metric",
+			args: args{scrapeLines: &[]string{
+				`# HELP go_metric This is an internal metric`,
+				`# TYPE go_metric gauge`,
+				`go_metric{foo="lion",instance="aaa"} 1`,
+				`go_metric{foo="lion",instance="bbb"} 2`},
+			},
+			wantErr: false,
+		},
+		{
 			name: "Must start with HELP, not TYPE",
 			args: args{scrapeLines: &[]string{
 				`# TYPE libvirt_domain_block_stats_allocation gauge`,
 				`libvirt_domain_block_stats_allocation{bus="ide",cache="writeback",domain="instance-aaaaa"} 1`},
 			},
-			want:    nil,
 			wantErr: true,
 		},
 		{
@@ -87,7 +125,6 @@ func Test_convertScrapeToConfig(t *testing.T) {
 				`libvirt_domain_block_meta{bus="ide",cache="writeback",domain="instance-aaaaa"} 1`,
 				`libvirt_domain_block_meta{bus="ide",cache="writeback",domain="instance-bbbbb"} 1`},
 			},
-			want:    nil,
 			wantErr: true,
 		},
 		{
@@ -97,7 +134,6 @@ func Test_convertScrapeToConfig(t *testing.T) {
 				`# TYPE some_other_metric gauge`,
 				`libvirt_domain_block_meta{bus="ide",cache="writeback",domain="instance-aaaaa"} 1`},
 			},
-			want:    nil,
 			wantErr: true,
 		},
 		{
@@ -529,6 +565,97 @@ func Test_isPercent(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := isPercent(tt.args.metricName, tt.args.honorpct); got != tt.want {
 				t.Errorf("isPercent() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_ScrapefileToCollection(t *testing.T) {
+	type args struct {
+		filename     string
+		maxdeviation int
+		function     string
+		interval     string
+		honorpct     string
+	}
+	tests := []struct {
+		name    string
+		args    args
+		wantErr bool
+	}{
+		{
+			name: "valid",
+			args: args{
+				filename:     "testdata/valid_scrape.txt",
+				maxdeviation: 1,
+				function:     "asc",
+				interval:     "1h-2h",
+				honorpct:     "percent",
+			},
+			wantErr: false,
+		},
+		{
+			name: "wrong interval",
+			args: args{
+				filename:     "testdata/valid_scrape.txt",
+				maxdeviation: 1,
+				function:     "asc",
+				interval:     "1h-10m",
+				honorpct:     "percent",
+			},
+			wantErr: true,
+		},
+		{
+			name: "wrong function",
+			args: args{
+				filename:     "testdata/valid_scrape.txt",
+				maxdeviation: 1,
+				function:     "foo",
+				interval:     "1m-10m",
+				honorpct:     "percent",
+			},
+			wantErr: true,
+		},
+		{
+			name: "wrong deviation",
+			args: args{
+				filename:     "testdata/valid_scrape.txt",
+				maxdeviation: -1,
+				function:     "rand",
+				interval:     "2m-10m",
+				honorpct:     "percent",
+			},
+			wantErr: false,
+		},
+		{
+			name: "invalid filename",
+			args: args{
+				filename:     "no-such-here",
+				maxdeviation: 0,
+				function:     "rand",
+				interval:     "2m-10m",
+				honorpct:     "percent",
+			},
+			wantErr: true,
+		},
+		{
+			name: "no args",
+			args: args{
+				filename:     "",
+				maxdeviation: 0,
+				function:     "",
+				interval:     "",
+				honorpct:     "",
+			},
+			wantErr: true,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			_, err := ScrapefileToCollection(tt.args.filename, tt.args.maxdeviation, tt.args.function, tt.args.interval, tt.args.honorpct)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("ScrapefileToCollection() error = %v, wantErr %v", err, tt.wantErr)
+				return
 			}
 		})
 	}

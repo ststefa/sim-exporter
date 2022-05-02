@@ -173,7 +173,7 @@ func (i *MetricItem) ParentMetric() *Metric {
 	return i.parent
 }
 
-// Compute duration since start modulo interval
+// Compute duration since start modulo interval (i.e. the interval repeats endlessly)
 func interval(start time.Time, interval time.Duration) (time.Duration, error) {
 	result := time.Duration(0)
 	passed := int64(time.Since(start))
@@ -216,7 +216,7 @@ func (i *MetricItem) generateValue(start time.Time) (float64, error) {
 			{
 				intervalFactor := (float64(elapsed) / float64(i.Interval)) * 2 * math.Pi // 0 at start of interval, 2*pi at end
 				mean := (i.Min + i.Max) / 2
-				result = mean + ((i.Max - i.Min) * math.Sin(intervalFactor))
+				result = mean + (((i.Max - i.Min) / 2) * math.Sin(intervalFactor))
 			}
 		default:
 			{

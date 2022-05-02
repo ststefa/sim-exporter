@@ -1,0 +1,182 @@
+version: "1"
+metrics:
+- name: libvirt_domain_block_meta
+  help: Block device metadata info. Device name, source file, serial.
+  type: gauge
+  labels:
+  - bus
+  - cache
+  - discard
+  - disk_type
+  - domain
+  items:
+  - min: 0.5213338657667075
+    max: 1.4786661342332925
+    func: asc
+    interval: 1h22m10s
+    labels:
+      bus: ide
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-0012fdbb
+- name: libvirt_domain_block_stats_flush_requests_total
+  help: Total flush requests from a block device.
+  type: counter
+  labels:
+  - bus
+  - cache
+  - discard
+  - disk_type
+  - domain
+  items:
+  - min: 0
+    max: 0
+    func: desc
+    interval: 10m8s
+    labels:
+      bus: ide
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-0012fdbb
+  - min: 3.4058524682111037e+06
+    max: 4.975215531788897e+06
+    func: rand
+    interval: 59m11s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000aeb0d
+  - min: 6.181411476316763e+06
+    max: 1.1927096523683237e+07
+    func: desc
+    interval: 1h5m10s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000b1d47
+- name: libvirt_domain_block_stats_flush_requests_gauge
+  help: Total flush requests from a block device.
+  type: gauge
+  labels:
+  - bus
+  - cache
+  - discard
+  - disk_type
+  - domain
+  items:
+  - min: 0
+    max: 0
+    func: asc
+    interval: 1h18m47s
+    labels:
+      bus: ide
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-0012fdbb
+  - min: 3.4404148790271236e+06
+    max: 4.940653120972876e+06
+    func: asc
+    interval: 22m20s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000aeb0d
+  - min: 8.695441153042927e+06
+    max: 9.413066846957073e+06
+    func: asc
+    interval: 52m9s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000b1d47
+- name: libvirt_domain_block_stats_flush_requests_summary
+  help: Total flush requests from a block device.
+  type: summary
+  labels:
+  - bus
+  - cache
+  - discard
+  - disk_type
+  - domain
+  items:
+  - min: 0
+    max: 0
+    func: desc
+    interval: 1h38m12s
+    labels:
+      bus: ide
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-0012fdbb
+  - min: 3.478678389348518e+06
+    max: 4.902389610651482e+06
+    func: desc
+    interval: 1h22m2s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000aeb0d
+  - min: 7.443643000256106e+06
+    max: 1.0664864999743894e+07
+    func: asc
+    interval: 1h38m59s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000b1d47
+- name: libvirt_domain_block_stats_flush_requests_hist
+  help: Total flush requests from a block device.
+  type: histogram
+  labels:
+  - bus
+  - cache
+  - discard
+  - disk_type
+  - domain
+  items:
+  - min: 0
+    max: 0
+    func: desc
+    interval: 22m45s
+    labels:
+      bus: ide
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-0012fdbb
+  - min: 3.9428749321089066e+06
+    max: 4.438193067891093e+06
+    func: sin
+    interval: 1h52m54s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000aeb0d
+  - min: 5.038542413196987e+06
+    max: 1.3069965586803013e+07
+    func: asc
+    interval: 1h33m17s
+    labels:
+      bus: scsi
+      cache: writeback
+      discard: unmap
+      disk_type: network
+      domain: instance-000b1d47
