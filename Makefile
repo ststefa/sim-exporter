@@ -3,7 +3,7 @@
 # - ALM pipeline (prefixed with "alm_")
 
 # phony targets are executed unconditionally, see https://docs.w3cub.com/gnu_make/phony-targets#Phony-Targets
-.PHONY: test examples local_build local_image clean
+#.PHONY: help test examples build image clean
 
 # Run this if no explicit target is specified
 .DEFAULT_GOAL := help
@@ -24,7 +24,7 @@ help:   ## Show this help
 	@grep -h "##" $(MAKEFILE_LIST) | grep -v grep | sed 's/:.*##/:/'
 
 test:  ## Run tests
-	go test ./...
+	go test -coverprofile /dev/null ./...
 
 examples:  ## Create examples/*yaml from examples/*txt
 	go run . convert -i 5m-1h -o examples/collectd_converted.yaml examples/collectd_scrape.txt
@@ -57,7 +57,7 @@ _build:
 # The ALM process _requires_ all output to be located under the build/ dir
 	mkdir -pv build
 	# CGO_ENABLED: required for "docker FROM SCRATCH"
-	# -w: Omit DWARF information
+	# -w: Omit DWARF debug information
 	# -X: Override variables at link-time
 	CGO_ENABLED=0 go build -ldflags "-w" -ldflags "-s" -ldflags "-X '$(MOD_NAME)/cmd.version=$(VERSION)'" -o build/$(EXEC_NAME)
 	cp -pr examples build

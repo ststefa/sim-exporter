@@ -1,7 +1,4 @@
 variables:
-  # General ALM debugging, causes "set -x" behaviour in ALM shell scripts as well as additional debug routines
-  ALM_DEBUG: 'true'
-
   # Default: "make --trace". We need to specify a target because the default
   # target is meant for local development
   GO_BUILD_COMMAND: 'make alm_build'
@@ -13,16 +10,15 @@ variables:
   # Helm unit tests considered bloat ;)
   DISABLE_HELM_UNIT_TEST_JOB: 'true'
 
-  # Purpose of "product catalog" is (yet) unknown, enabling causes ALM to fail
+  # Until you have a product chart that needs to aggregate multiple repositories, including this one should be disabled
   DISABLE_PRODUCT_CATALOG_AUTOUPDATE: "true"
 
   # Disabling SonarQube code quality checks. Saves ~10s but should not
   # usually be disabled
   #DISABLE_SONAR: 'true'
 
-  # Force version bumps for changes on default branch instead of just bumping
-  # on non-default branches
-  FORCE_MASTER_VERSION_BUMPS: 'true'
+  # Force version bumps for master branch as by default ALM bumps $INTEGRATION_BRANCH = develop. The main branch should usually only be changed by merging from the develop branch.
+  #FORCE_MASTER_VERSION_BUMPS: 'true'
 
   # Set the default git branch (default: "master")
   MAIN_BRANCH: 'main'
@@ -36,7 +32,8 @@ variables:
 
 include:
   project: alm/common-infrastructure/gitlab-ci-templates
-  ref: 'master'
+  # use custom branch of alm. Should usually be set to "master"
+  ref: 'develop'
   file: '.go-docker-helm.yml'
 
 # Analyze package-and-publish phase (can be applied to any phase)

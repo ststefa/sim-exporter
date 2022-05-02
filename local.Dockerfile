@@ -17,7 +17,7 @@ COPY go.mod go.sum ./
 RUN --mount=type=secret,id=netrc,target=/root/.netrc go mod download
 # Copy and build
 COPY . .
-RUN --mount=type=secret,id=netrc,target=/root/.netrc make local_build
+RUN --mount=type=secret,id=netrc,target=/root/.netrc make build
 
 # The remaining part should be similar to the regular `Dockerfile`
 FROM alpine
