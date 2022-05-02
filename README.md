@@ -93,7 +93,7 @@ A prometheus scrape output looks roughly like so:
 ```sh
 $ cat scrape.txt
 # HELP my_metric This metric shows awesome values
-# TYPE my_metric counter
+# TYPE my_metric gauge
 my_metric{flavor="m1.medium",instance_name="server1"} 123
 my_metric{flavor="m1.large",instance_name="server2"} 456
 # HELP population This metric shows even more awesome values
@@ -102,7 +102,7 @@ population{planet="earth"} 7.418e+9
 population{planet="mars"} 0
 ```
 
-Every metric is introduced by a HELP/TYPE header followed by one or more lines which are prefixed with that metric name. Each line is referred to as a "metric item". They have the same name but differ by their set of labels (the key/value pairs enclosed in "{}"). That is, two metric items must never have identical label sets. The line ends with the value of the metric item.
+Every metric is introduced by a HELP/TYPE header followed by one or more lines which are prefixed with that metric name. Each line is referred to as a "metric item". They have the same name but differ by their set of labels (the key/value pairs enclosed in "{}"). That is, two metric items of a given metric must never have identical label sets. The line ends with the value of the metric item.
 
 The convert command will turn this into a simulator configuration.
 
@@ -114,22 +114,22 @@ version: "1"
 metrics:
 - name: my_metric
   help: This metric shows awesome values
-  type: counter
+  type: gauge
   labels:
   - flavor
   - instance_name
   items:
-  - min: 104.30887825564639
-    max: 141.6911217443536
-    func: rand
-    interval: 1h4m23s
+  - min: 90.22476595603
+    max: 155.77523404397
+    func: sin
+    interval: 1h47m5s
     labels:
       flavor: m1.medium
       instance_name: server1
-  - min: 257.31808355013527
-    max: 654.6819164498647
-    func: asc
-    interval: 18m55s
+  - min: 351.8987625539297
+    max: 560.1012374460703
+    func: rand
+    interval: 45m10s
     labels:
       flavor: m1.large
       instance_name: server2
@@ -139,16 +139,16 @@ metrics:
   labels:
   - planet
   items:
-  - min: 4.325312545201143e+09
-    max: 1.0510687454798857e+10
-    func: desc
-    interval: 28m0s
+  - min: 5.446888360363824e+09
+    max: 9.389111639636177e+09
+    func: asc
+    interval: 1h19m24s
     labels:
       planet: earth
   - min: 0
     max: 0
-    func: desc
-    interval: 1h58m47s
+    func: asc
+    interval: 1h34m19s
     labels:
       planet: mars
 ```
@@ -183,25 +183,24 @@ INFO[0000] Serving metrics on *:1234/showme
 $ curl localhost:1234/showme
 ... (lots of internal prometheus/golang stuff) ...
 # HELP my_metric This metric shows awesome values
-# TYPE my_metric counter
-my_metric{flavor="m1.large",instance_name="server2"} 415.9462395366754
-my_metric{flavor="m1.medium",instance_name="server1"} 115.7983799012793
+# TYPE my_metric gauge
+my_metric{flavor="m1.large",instance_name="server2"} 503.7733071579815
+my_metric{flavor="m1.medium",instance_name="server1"} 123.00000220622213
 # HELP population This metric shows even more awesome values
 # TYPE population gauge
-population{planet="earth"} 7.418002421701642e+09
+population{planet="earth"} 5.446888466456302e+09
 population{planet="mars"} 0
 $ sleep 10
 $ curl localhost:1234/showme
 ... (lots of internal prometheus/golang stuff again) ...
 # HELP my_metric This metric shows awesome values
-# TYPE my_metric counter
-my_metric{flavor="m1.large",instance_name="server2"} 1267.1453595383523
-my_metric{flavor="m1.medium",instance_name="server1"} 365.813331199372
+# TYPE my_metric gauge
+my_metric{flavor="m1.large",instance_name="server2"} 447.28264243993624
+my_metric{flavor="m1.medium",instance_name="server1"} 123.64107424600228
 # HELP population This metric shows even more awesome values
 # TYPE population gauge
-population{planet="earth"} 8.623539364871435e+09
+population{planet="earth"} 5.463440479214053e+09
 population{planet="mars"} 0
-
 ```
 
 ## Code
