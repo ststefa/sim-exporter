@@ -51,7 +51,7 @@ alm_build: _build ## Build executable in GEC ALM CI pipeline
 # This cannot be technically enforced but is indicated with the "_" prefix.
 
 _check_netrc:
-	@[ -f ~/.netrc ] || (echo "~/.netrc is required to access non-public go repo. See https://git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/observability-cli/-/blob/master/README.md#golang-and-private-repos." ; false)
+	@[ -f ~/.netrc ] || (echo "~/.netrc is required to access non-public go repo. See https://git.mgmt.innovo-cloud.de/obs/observability-cli/-/blob/master/README.md#golang-and-private-repos." ; false)
 
 _build:
 # The ALM process _requires_ all output to be located under the build/ dir
