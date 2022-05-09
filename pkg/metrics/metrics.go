@@ -287,7 +287,7 @@ func FromYamlFile(filename string) (*Collection, error) {
 				sort.Strings(keys)
 				sort.Strings(metric.Labels)
 				if !stringSlicesEqual(keys, metric.Labels) {
-					validationErrors = append(validationErrors, fmt.Sprintf("metric %v: Label mismatch. Item=%v, matric=%v", c.Metrics[i].Name, keys, metric.Labels))
+					validationErrors = append(validationErrors, fmt.Sprintf("metric %v: Label mismatch. Item=%v, metric=%v", c.Metrics[i].Name, keys, metric.Labels))
 				}
 			}
 		}
