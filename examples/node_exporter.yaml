@@ -1,17 +1,6 @@
 version: v1
 
 metrics:
-  - name: node_uname_info
-    help: Node info
-    type: gauge
-    labels: [nodename]
-    items:
-    - min: 1
-      max: 1
-      func: rand
-      interval: 10m
-      labels: {nodename: "SIMULATOR"}
-
   - name: node_filesystem_size_bytes
     help: Filesystem space available to non-root users in bytes.
     type: gauge

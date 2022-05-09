@@ -32,7 +32,7 @@ variables:
 
 include:
   project: alm/common-infrastructure/gitlab-ci-templates
-  # use custom branch of alm. Should usually be set to "master"
+  # use custom branch of alm due to https://git.mgmt.innovo-cloud.de/alm/common-infrastructure/gitlab-ci-templates/-/commit/63fd5c65b71f2e91cf310a9aaf5a7178114db828. Should usually be set to "master"
   ref: 'develop'
   file: '.go-docker-helm.yml'
 
