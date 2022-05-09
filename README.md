@@ -245,5 +245,5 @@ The chart can optionally create an ingress in case you need to make the simulato
 
 - Functions should be factored out so they become easier to extend (package/interface `mutator`?)
 - Additional func "rect": v=i.Min in first half of interval, i.Max in second half
-- Additional func "saw": linearly increase until middle of interval, then linearly decrase
-- It might be better to treat small values as an int. E.g. for an "up" value it makes no sense that it deviates in a float range.
+- Additional func "saw": linearly increase until middle of interval, then linearly decrease
+- It might be better to treat small values as an int. E.g. for an "up" value it makes no sense that it deviates after the decimal point. At the same time, there might be values for which it does make sense. How to decide without configuring explicitly? Perhaps regex a la "percent" rule?
