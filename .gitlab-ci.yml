@@ -45,4 +45,5 @@ include:
 #    - "ls -la /"
 #    - "echo pwd:$(pwd)"
 #    - "echo id:$(id)"
-#    - "find . -ls"
+#    - "ls -la /"
+#    - "find /build* -type f -ls"
