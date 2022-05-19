@@ -1,9 +1,7 @@
 # Default values for sim-exporter.
 
-replicaCount: 1
-
 image:
-  repository: artifactory.intern.gec.io/docker-release-local/sim-exporter
+  repository: artifactory.intern.gec.io/docker/sim-exporter
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   #tag: "latest"
@@ -12,17 +10,24 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-# Creates a configmap from local file contents. The resulting ConfigMap has keys
-# for any $(basename <configFile>) (i.e., the path is stripped)
-configFiles:
-  - examples/libvirt_converted.yaml
-  - examples/node_exporter.yaml
+# Creates a configmap of this dict. Each entry consists of key and value. The key is used as a config filename which can be referenced by .Values.activeConfig. The value is a complete and valid simulator config.
+configs:
+  outofthebox.yaml: |-
+    version: v1
+    metrics:
+    - name: test-metric
+      type: gauge
+      items:
+      - min: 10
+        max: 100
+        func: sin
+        interval: 3m
 
 # Specify item from .Values.configFiles that will be served
-activeConfig: libvirt_converted.yaml
+activeConfig: outofthebox.yaml
 
-# Interval in which the values are mutated
-refreshTime: 15s
+# Interval in which the values are refreshed
+refreshTime: 5s
 
 serviceAccount:
   create: true

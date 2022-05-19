@@ -5,7 +5,7 @@ metadata:
   labels:
   {{- include "sim-exporter.selectorLabels" . | nindent 4 }}
 data:
-  {{- range .Values.configFiles }}
-  {{ base . }}: |-
-    {{- $.Files.Get . | nindent 4 }}
+  {{- range $k, $v := .Values.configs }}
+  {{ $k }}: |-
+    {{- $v | nindent 4 }}
   {{- end }}

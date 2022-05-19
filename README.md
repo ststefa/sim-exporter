@@ -237,7 +237,7 @@ Starts the interval in the middle (`(min+max)/2`) and does a full sine wave with
 
 ## Helm Chart
 
-The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes >=1.19 environment. Multiple configuration files can be mounted as a ConfigMap. Supply your own input by changing `.Values.configFiles`. One of the configurations is then chosen with `.Values.activeConfig` and served over `http://*:8080/metrics>`.
+The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes >=1.19 environment. Multiple configuration files can be mounted as a ConfigMap. Supply your own input by changing `.Values.configs`. One of the configurations is then chosen with `.Values.activeConfig` and served over `http://*:8080/metrics>` by default.
 
 The chart can optionally create an ingress in case you need to make the simulator reachable from outside the prometheus cluster. However this is a poorly tested path which is not deemed excessively relevant.
 
@@ -255,13 +255,30 @@ $
 Next, edit `myvalues.yaml` to your preference. I recommend deleting everything that is not changed to keep it minimal. You will usually want to keep just `configFiles, activeConfig` and maybe `refreshTime`. The result might e.g. look like so:
 
 ```sh
-configFiles:
-  - myconf.yaml
-activeConfig: myconf.yaml
+$ cat myvalues.yaml
+configs:
+  mymetrics.yaml: |-
+    version: v1
+    metrics:
+    - name: wave
+      type: gauge
+      items:
+      - min: 0
+        max: 10
+        func: sin
+        interval: 3m
+    - name: saw
+      type: gauge
+      items:
+      - min: -10
+        max: 20
+        func: asc
+        interval: 2m
+activeConfig: mymetrics.yaml
 refreshTime: 5s
 ```
 
-Make sure that the file(s) you specified in `configFiles` exist and that they are valid (see **Usage** above).
+Make sure that your configs are valid. You might check that by creating them as a seperate file first and validate them using the `check` command (see **Usage** above).
 
 Deploy the chart with your values
 
@@ -270,7 +287,7 @@ $ helm upgrade --install mysim -f myvalues.yaml gec/sim-exporter
 ...
 ```
 
-The chart produces useful output that show how to access to exporter.
+The chart produces useful output that shows how to access the exporter through the k8s `Service`.
 
 ## TODO: Notes to Self
 
