@@ -247,8 +247,9 @@ The example assumes that you registered the GEC artifactory with the name "gec".
 
 First, extract the values of the chart to a local file
 
-```
+```sh
 $ helm show values gec/sim-exporter > myvalues.yaml
+$
 ```
 
 Next, edit `myvalues.yaml` to your preference. I recommend deleting everything that is not changed to keep it minimal. You will usually want to keep just `configFiles, activeConfig` and maybe `refreshTime`. The result might e.g. look like so:

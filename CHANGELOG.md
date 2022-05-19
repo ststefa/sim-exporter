@@ -2,10 +2,12 @@
 
 Due to the auto-versioning process of the CI, the versions are not strictly sequential. Some minor versions might be missing. However, they should not contain any notable changes.
 
-## 1.0.11 (2022-05-09) #REMOVEME
+## 1.0.15 (2022-05-19)
 
 add helm deployment example
+
 minor doc
+
 relocate package import path
 
 ## 1.0.7 (2022-05-02)
