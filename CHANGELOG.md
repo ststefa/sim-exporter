@@ -4,12 +4,13 @@ Due to the auto-versioning process of the CI, the versions are not strictly sequ
 
 ## 1.0.11 (2022-05-09) #REMOVEME
 
+add helm deployment example
 minor doc
-relocate package
+relocate package import path
 
 ## 1.0.7 (2022-05-02)
 
-FIX: local image build
+fix: local image build
 
 Minor cleanup tasks and docs
 

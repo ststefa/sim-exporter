@@ -241,6 +241,36 @@ The project contains a simple helm chart which makes it easy to drop the simulat
 
 The chart can optionally create an ingress in case you need to make the simulator reachable from outside the prometheus cluster. However this is a poorly tested path which is not deemed excessively relevant.
 
+### Helm Deployment Example
+
+The example assumes that you registered the GEC artifactory with the name "gec". Modify as appropriate.
+
+First, extract the values of the chart to a local file
+
+```
+$ helm show values gec/sim-exporter > myvalues.yaml
+```
+
+Next, edit `myvalues.yaml` to your preference. I recommend deleting everything that is not changed to keep it minimal. You will usually want to keep just `configFiles, activeConfig` and maybe `refreshTime`. The result might e.g. look like so:
+
+```sh
+configFiles:
+  - myconf.yaml
+activeConfig: myconf.yaml
+refreshTime: 5s
+```
+
+Make sure that the file(s) you specified in `configFiles` exist and that they are valid (see **Usage** above).
+
+Deploy the chart with your values
+
+```sh
+$ helm upgrade --install mysim -f myvalues.yaml gec/sim-exporter
+...
+```
+
+The chart produces useful output that show how to access to exporter.
+
 ## TODO: Notes to Self
 
 - Functions should be factored out so they become easier to extend (package/interface `mutator`?)
