@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
-	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/metrics"
+	"git.mgmt.innovo-cloud.de/obs/sim-exporter/pkg/errors"
+	"git.mgmt.innovo-cloud.de/obs/sim-exporter/pkg/metrics"
 	"github.com/spf13/cobra"
 )
 

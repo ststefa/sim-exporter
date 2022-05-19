@@ -1,4 +1,4 @@
-module git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter
+module git.mgmt.innovo-cloud.de/obs/sim-exporter
 
 go 1.18
 
