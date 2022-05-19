@@ -6,6 +6,8 @@ Due to the auto-versioning process of the CI, the versions are not strictly sequ
 
 add helm deployment example
 
+Supply config through values.yaml instead of through a file
+
 minor doc
 
 relocate package import path
