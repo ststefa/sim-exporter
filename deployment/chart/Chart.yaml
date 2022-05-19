@@ -4,6 +4,8 @@ description: A prometheus metric simulator
 
 type: application
 
+# Proper version is injected through ALM
 version: 0.0.0
 
+# Proper version is injected through ALM
 appVersion: 0.0.0
