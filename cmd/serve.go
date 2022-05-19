@@ -11,8 +11,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 	"github.com/spf13/cobra"
 
-	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/errors"
-	"git.mgmt.innovo-cloud.de/operations-center/operationscenter-observability/sim-exporter/pkg/metrics"
+	"git.mgmt.innovo-cloud.de/obs/sim-exporter/pkg/errors"
+	"git.mgmt.innovo-cloud.de/obs/sim-exporter/pkg/metrics"
 )
 
 var (
