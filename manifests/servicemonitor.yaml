@@ -1,0 +1,27 @@
+# In case you want to use the sim-exporter with an Prometheus Operator to automate scraping
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: mysim-sim-exporter-servicemonitor
+  # Change this to the namespace the Prometheus instance is running in
+  # namespace: default
+  labels:
+    name: mysim-sim-exporter-servicemonitor
+    namespace: default
+    app.kubernetes.io/instance: mysim-servicemonitor
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sim-exporter-servicemonitor
+spec:
+  endpoints:
+    - interval: 5s
+      path: /metrics
+      scrapeTimeout: 3s
+      targetPort: 8080
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: mysim
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: sim-exporter
