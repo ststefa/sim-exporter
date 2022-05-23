@@ -15,19 +15,40 @@ configs:
   outofthebox.yaml: |-
     version: v1
     metrics:
-    - name: test-metric
+    - name: sim_asc
+      type: gauge
+      items:
+      - min: 10
+        max: 100
+        func: asc
+        interval: 5m
+    - name: sim_rand
+      type: gauge
+      items:
+      - min: 10
+        max: 100
+        func: rand
+        interval: 5m
+    - name: sim_sin
       type: gauge
       items:
       - min: 10
         max: 100
         func: sin
-        interval: 3m
+        interval: 5m
+    - name: sim_count
+      type: counter
+      items:
+      - min: 10
+        max: 100
+        func: rand
+        interval: 1m
 
 # Specify item from .Values.configFiles that will be served
 activeConfig: outofthebox.yaml
 
 # Interval in which the values are refreshed
-refreshTime: 5s
+refreshTime: 15s
 
 serviceAccount:
   create: true
@@ -69,6 +90,10 @@ ingress:
   #  - secretName: chart-example-tls
   #    hosts:
   #      - chart-example.local
+
+# In case you use Prometheus Operator you can create a monitoring.coreos.com ServiceMonitor to automate the scraping setup. The scraping interval will be set to .Values.refreshTime
+serviceMonitor:
+  enabled: false
 
 resources:
   limits:

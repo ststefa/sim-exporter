@@ -1,0 +1,21 @@
+{{- if .Values.serviceMonitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "sim-exporter.fullname" . }}-servicemonitor
+  labels:
+    app.kubernetes.io/instance: {{ .Release.Name }}-servicemonitor
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: sim-exporter-servicemonitor
+spec:
+  endpoints:
+    - interval: {{ .Values.refreshTime }}
+      path: /metrics
+      scrapeTimeout: 5s
+      targetPort: {{ .Values.service.port }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Release.Name }}
+      app.kubernetes.io/managed-by: Helm
+      app.kubernetes.io/name: {{ include "sim-exporter.name" . }}
+{{- end }}

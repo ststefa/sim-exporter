@@ -2,6 +2,10 @@
 
 Due to the auto-versioning process of the CI, the versions are not strictly sequential. Some minor versions might be missing. However, they should not contain any notable changes.
 
+## 1.0.18 (2022-05-23)
+
+add optional monitoring.coreos.com ServiceMonitor to chart
+
 ## 1.0.17 (2022-05-19)
 
 add helm deployment example
