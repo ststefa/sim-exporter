@@ -207,15 +207,15 @@ population{planet="mars"} 0
 
 The simulator configuration is represented by a `Collection`. It consists of a list of `Metric` objects.
 
-The metric object mainly carries the name and type of the metric. The type is a prometheus vector type like `counter` or `gauge`. Secondly, the metric contains a list of `MetricItem`s.
+The metric object mainly carries the name and type of the metric. The type is a prometheus vector type like `counter` or `gauge`. Secondly, the metric contains a list of `MetricItem` entries.
 
-Each metric item contains the parameters required for the value calculation which happens over time. The main factors are the `min` and `max` values as well as `func`tion and `interval`.
+Each metric item contains the parameters required for the value calculation which happens over time. The main factors are the `min` and `max` values as well as `func`(tion) and `interval`.
 
-Collections can be created by either marshaling them from a yaml file or by creating them programmatically.
+Collections can be created by either unmarshaling them from a yaml file or by creating them programmatically.
 
 ## Functions
 
-Each metric item has a configured function and interval. They are used to allow for a deterministic way to mutate values over time (as apposed to random mutation). New values for all metrics are calculated on every refresh (see `serve` command). The values change according to the function stretched over the interval.
+Each metric item has a configured function and interval. They are used to allow for a deterministic way to change values over time (as apposed to changing them randomly). New values for all metrics are calculated on every refresh (see `serve` command). The values change according to the function stretched over the interval.
 
 Implemented functions are:
 
@@ -237,13 +237,15 @@ Starts the interval in the middle (`(min+max)/2`) and does a full sine wave with
 
 ## Helm Chart
 
-The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes >=1.19 environment. Multiple configuration files can be mounted as a ConfigMap. Supply your own input by changing `.Values.configs`. One of the configurations is then chosen with `.Values.activeConfig` and served over `http://*:8080/metrics>` by default.
+The project contains a simple helm chart which makes it easy to drop the simulator into a kubernetes (aka k8s) >=1.19 environment. Multiple configuration files can be mounted as a k8s `ConfigMap`. Supply your own input by changing `.Values.configs`. One of the configurations is then chosen with `.Values.activeConfig` and served over `http://*:8080/metrics>` by default.
 
 The chart can optionally create an ingress in case you need to make the simulator reachable from outside the prometheus cluster. However this is a poorly tested path which is not deemed excessively relevant.
 
+In case your kubernetes has a Prometheus Operator installed, you can also enable automatic scrape configuration using a ServiceMonitor.
+
 ### Helm Deployment Example
 
-The example assumes that you registered the GEC artifactory with the name "gec". Modify as appropriate.
+The example assumes that you registered the GEC artifactory with the name "gec". Modify as appropriate. Also, make sure it is properly updated using `helm repo update` to get the latest version.
 
 First, extract the values of the chart to a local file
 
@@ -252,22 +254,21 @@ $ helm show values gec/sim-exporter > myvalues.yaml
 $
 ```
 
-Next, edit `myvalues.yaml` to your preference. I recommend deleting everything that is not changed to keep it minimal. You will usually want to keep just `configFiles, activeConfig` and maybe `refreshTime`. The result might e.g. look like so:
+Next, edit `myvalues.yaml` to your preference. I recommend deleting everything that is not changed to keep it minimal. You will usually want to keep just `configs, activeConfig` and maybe `refreshTime`. The result might e.g. look like so:
 
-```sh
-$ cat myvalues.yaml
+```yaml
 configs:
   mymetrics.yaml: |-
     version: v1
     metrics:
-    - name: wave
+    - name: happy-wave
       type: gauge
       items:
       - min: 0
         max: 10
         func: sin
         interval: 3m
-    - name: saw
+    - name: flippy-saw
       type: gauge
       items:
       - min: -10
@@ -278,7 +279,14 @@ activeConfig: mymetrics.yaml
 refreshTime: 5s
 ```
 
-Make sure that your configs are valid. You might check that by creating them as a seperate file first and validate them using the `check` command (see **Usage** above).
+...or, if your kubernetes has a Prometheus Operator, additionally:
+
+```yaml
+serviceMonitor:
+  enabled: true
+```
+
+Make sure that your configs are valid. You might check that by creating them as a separate file first and validate them using the `check` command (see **Usage** above).
 
 Deploy the chart with your values
 
@@ -287,7 +295,7 @@ $ helm upgrade --install mysim -f myvalues.yaml gec/sim-exporter
 ...
 ```
 
-The chart produces useful output that shows how to access the exporter through the k8s `Service`.
+The chart produces useful output that shows how to access the exporter through the k8s `Service`. In case of using Prometheus Operator, your metrics should additionally be immediately scraped and visible.
 
 ## TODO: Notes to Self
 
