@@ -23,163 +23,163 @@ func generateTempConfig(content []string) (fileName string, err error) {
 }
 
 /*
-func Test_BuildConfiguration(t *testing.T) {
-	tests := []struct {
-		name    string
-		content []byte
-		wantErr bool
-	}{
-		{
-			name: "empty",
-			content: []byte(
-				"",
-			),
-			wantErr: true,
-		},
-		{
-			name: "just-metrics",
-			content: []byte(
-				"metrics:\n",
-			),
-			wantErr: true,
-		},
-		{
-			name: "empty-metric",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metrics:\n",
-			),
-			wantErr: true,
-		},
-		{
-			name: "invalid-metric-type",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_a:\n" +
-					"    type: foo\n",
-			),
-			wantErr: true,
-		},
-		{
-			name: "surplus-item-label",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_b2:\n" +
-					"    type: gauge\n" +
-					"    labels:\n" +
-					"    - l1\n" +
-					"    items:\n" +
-					"    - value: 1\n" +
-					"      labels:\n" +
-					"        l1: v1\n" +
-					"        l2: v2",
-			),
-			wantErr: true,
-		},
-		{
-			name: "missing-item-label",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_b3:\n" +
-					"    type: gauge\n" +
-					"    labels:\n" +
-					"    - l1\n" +
-					"    - l2\n" +
-					"    items:\n" +
-					"    - value: 1\n" +
-					"      labels:\n" +
-					"        l1: v1\n",
-			),
-			wantErr: true,
-		},
-		{
-			name: "valid-multi-value-metric",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_b:\n" +
-					"    type: gauge\n" +
-					"    labels:\n" +
-					"    - l1\n" +
-					"    items:\n" +
-					"    - value: 100-200\n" +
-					"      labels:\n" +
-					"        l1: v1\n",
-			),
-			wantErr: false,
-		},
-		{
-			name: "valid-metric-nolabel-gauge",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_c:\n" +
-					"    type: gauge\n" +
-					"    items:\n" +
-					"    - value: 1\n",
-			),
-			wantErr: false,
-		},
-		{
-			name: "valid-metric-nolabel-counter",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_d:\n" +
-					"    type: counter\n" +
-					"    items:\n" +
-					"    - value: 1\n",
-			),
-			wantErr: false,
-		},
-		{
-			name: "valid-metric-nolabel-summary",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_e:\n" +
-					"    type: summary\n" +
-					"    items:\n" +
-					"    - value: 1\n",
-			),
-			wantErr: false,
-		},
-		{
-			name: "valid-metric-nolabel-histogram",
-			content: []byte(
-				"version: 1\n" +
-					"metrics:\n" +
-					"  my_metric_f:\n" +
-					"    type: histogram\n" +
-					"    items:\n" +
-					"    - value: 1\n",
-			),
-			wantErr: false,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			config, err := BuildConfiguration(tt.content)
-			if err != nil {
-				if !tt.wantErr {
-					t.Errorf("BuildConfiguration(%v) error = %v, wantErr %v", tt.name, err, tt.wantErr)
-				}
-			} else {
-				if tt.wantErr {
-					t.Errorf("BuildConfiguration(%v) no error but wantErr %v", tt.name, tt.wantErr)
-				}
-				err = SetupMetricsCollection(config)
+	func Test_BuildConfiguration(t *testing.T) {
+		tests := []struct {
+			name    string
+			content []byte
+			wantErr bool
+		}{
+			{
+				name: "empty",
+				content: []byte(
+					"",
+				),
+				wantErr: true,
+			},
+			{
+				name: "just-metrics",
+				content: []byte(
+					"metrics:\n",
+				),
+				wantErr: true,
+			},
+			{
+				name: "empty-metric",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metrics:\n",
+				),
+				wantErr: true,
+			},
+			{
+				name: "invalid-metric-type",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_a:\n" +
+						"    type: foo\n",
+				),
+				wantErr: true,
+			},
+			{
+				name: "surplus-item-label",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_b2:\n" +
+						"    type: gauge\n" +
+						"    labels:\n" +
+						"    - l1\n" +
+						"    items:\n" +
+						"    - value: 1\n" +
+						"      labels:\n" +
+						"        l1: v1\n" +
+						"        l2: v2",
+				),
+				wantErr: true,
+			},
+			{
+				name: "missing-item-label",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_b3:\n" +
+						"    type: gauge\n" +
+						"    labels:\n" +
+						"    - l1\n" +
+						"    - l2\n" +
+						"    items:\n" +
+						"    - value: 1\n" +
+						"      labels:\n" +
+						"        l1: v1\n",
+				),
+				wantErr: true,
+			},
+			{
+				name: "valid-multi-value-metric",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_b:\n" +
+						"    type: gauge\n" +
+						"    labels:\n" +
+						"    - l1\n" +
+						"    items:\n" +
+						"    - value: 100-200\n" +
+						"      labels:\n" +
+						"        l1: v1\n",
+				),
+				wantErr: false,
+			},
+			{
+				name: "valid-metric-nolabel-gauge",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_c:\n" +
+						"    type: gauge\n" +
+						"    items:\n" +
+						"    - value: 1\n",
+				),
+				wantErr: false,
+			},
+			{
+				name: "valid-metric-nolabel-counter",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_d:\n" +
+						"    type: counter\n" +
+						"    items:\n" +
+						"    - value: 1\n",
+				),
+				wantErr: false,
+			},
+			{
+				name: "valid-metric-nolabel-summary",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_e:\n" +
+						"    type: summary\n" +
+						"    items:\n" +
+						"    - value: 1\n",
+				),
+				wantErr: false,
+			},
+			{
+				name: "valid-metric-nolabel-histogram",
+				content: []byte(
+					"version: 1\n" +
+						"metrics:\n" +
+						"  my_metric_f:\n" +
+						"    type: histogram\n" +
+						"    items:\n" +
+						"    - value: 1\n",
+				),
+				wantErr: false,
+			},
+		}
+		for _, tt := range tests {
+			t.Run(tt.name, func(t *testing.T) {
+				config, err := BuildConfiguration(tt.content)
 				if err != nil {
-					t.Error(err)
+					if !tt.wantErr {
+						t.Errorf("BuildConfiguration(%v) error = %v, wantErr %v", tt.name, err, tt.wantErr)
+					}
+				} else {
+					if tt.wantErr {
+						t.Errorf("BuildConfiguration(%v) no error but wantErr %v", tt.name, tt.wantErr)
+					}
+					err = SetupMetricsCollection(config)
+					if err != nil {
+						t.Error(err)
+					}
 				}
-			}
-		})
+			})
+		}
 	}
-}
 */
 func Test_FromYamlFile(t *testing.T) {
 	tests := []struct {

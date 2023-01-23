@@ -1,0 +1,49 @@
+variables:
+  # Default: "make --trace". We need to specify a target because the default
+  # target is meant for local development
+  GO_BUILD_COMMAND: 'make alm_build'
+  GO_TEST_COMMAND: 'go clean -testcache && go test ./... -coverprofile=coverage.out'
+
+  # ALM expects one or more directories below this one (one dir per chart)
+  HELM_CHART_PATH: 'deployment'
+
+  # Helm unit tests considered bloat ;)
+  DISABLE_HELM_UNIT_TEST_JOB: 'true'
+
+  # Until you have a product chart that needs to aggregate multiple repositories, including this one should be disabled
+  DISABLE_PRODUCT_CATALOG_AUTOUPDATE: "true"
+
+  # Disabling SonarQube code quality checks. Saves ~10s but should not
+  # usually be disabled
+  #DISABLE_SONAR: 'true'
+
+  # Force version bumps for master branch as by default ALM bumps $INTEGRATION_BRANCH = develop. The main branch should usually only be changed by merging from the develop branch.
+  #FORCE_MASTER_VERSION_BUMPS: 'true'
+
+  # Set the default git branch (default: "master")
+  MAIN_BRANCH: 'main'
+
+  # Disable irrelevant build logic
+  DISABLE_MAVEN_DEPLOY: 'true'
+  DISABLE_GRADLE_DEPLOY: 'true'
+  DISABLE_PYTHON_DEPLOY: 'true'
+  DISABLE_SETUPTOOLS_DEPLOY: 'true'
+
+
+include:
+  project: alm/common-infrastructure/gitlab-ci-templates
+  # use custom branch of alm due to https://git.mgmt.innovo-cloud.de/alm/common-infrastructure/gitlab-ci-templates/-/commit/63fd5c65b71f2e91cf310a9aaf5a7178114db828. Should usually be set to "master" (default)
+  #ref: 'develop'
+  file: '.go-docker-helm.yml'
+
+# Analyze package-and-publish phase (can be applied to any phase)
+#docker-debug:
+#  stage: package-and-publish
+#  extends: .base-job
+#  script:
+#    - "env"
+#    - "ls -la /"
+#    - "echo pwd:$(pwd)"
+#    - "echo id:$(id)"
+#    - "ls -la /"
+#    - "find /build* -type f -ls"

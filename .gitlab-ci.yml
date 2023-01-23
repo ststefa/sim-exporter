@@ -1,49 +1,61 @@
-variables:
-  # Default: "make --trace". We need to specify a target because the default
-  # target is meant for local development
-  GO_BUILD_COMMAND: 'make alm_build'
-  GO_TEST_COMMAND: 'go clean -testcache && go test ./... -coverprofile=coverage.out'
+# You can copy and paste this template into a new `.gitlab-ci.yml` file.
+# You should not add this template to an existing `.gitlab-ci.yml` file by using the `include:` keyword.
+#
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Go.gitlab-ci.yml
 
-  # ALM expects one or more directories below this one (one dir per chart)
-  HELM_CHART_PATH: 'deployment'
+image: golang:1.18-bullseye
 
-  # Helm unit tests considered bloat ;)
-  DISABLE_HELM_UNIT_TEST_JOB: 'true'
+stages:
+  - test
+  - build
+   - deploy
 
-  # Until you have a product chart that needs to aggregate multiple repositories, including this one should be disabled
-  DISABLE_PRODUCT_CATALOG_AUTOUPDATE: "true"
+format:
+  stage: test
+  script:
+    - go fmt $(go list ./... | grep -v /vendor/)
+    - go vet $(go list ./... | grep -v /vendor/)
+    - make test
 
-  # Disabling SonarQube code quality checks. Saves ~10s but should not
-  # usually be disabled
-  #DISABLE_SONAR: 'true'
+compile:
+  stage: build
+  script:
+    - make build
+  artifacts:
+    paths:
+      - build
 
-  # Force version bumps for master branch as by default ALM bumps $INTEGRATION_BRANCH = develop. The main branch should usually only be changed by merging from the develop branch.
-  #FORCE_MASTER_VERSION_BUMPS: 'true'
+docker-build:
+  # Use the official docker image.
+  image: docker:latest
+  stage: build
+  before_script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
+  script: |
+    if [[ "$CI_COMMIT_BRANCH" == "$CI_DEFAULT_BRANCH" ]]; then
+      TAG="latest"
+    else
+      TAG="$CI_COMMIT_REF_SLUG"
+    fi
+    docker build -t "$CI_REGISTRY_IMAGE$:{TAG}" .
+    docker push "$CI_REGISTRY_IMAGE:${TAG}"
 
-  # Set the default git branch (default: "master")
-  MAIN_BRANCH: 'main'
+deploy:
+  stage: deploy
+  script: |
+    echo "nothing here"
+  environment: production
 
-  # Disable irrelevant build logic
-  DISABLE_MAVEN_DEPLOY: 'true'
-  DISABLE_GRADLE_DEPLOY: 'true'
-  DISABLE_PYTHON_DEPLOY: 'true'
-  DISABLE_SETUPTOOLS_DEPLOY: 'true'
+# To contribute improvements to CI/CD templates, please follow the Development guide at:
+# https://docs.gitlab.com/ee/development/cicd/templates.html
+# This specific template is located at:
+# https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Docker.gitlab-ci.yml
 
-
-include:
-  project: alm/common-infrastructure/gitlab-ci-templates
-  # use custom branch of alm due to https://git.mgmt.innovo-cloud.de/alm/common-infrastructure/gitlab-ci-templates/-/commit/63fd5c65b71f2e91cf310a9aaf5a7178114db828. Should usually be set to "master" (default)
-  #ref: 'develop'
-  file: '.go-docker-helm.yml'
-
-# Analyze package-and-publish phase (can be applied to any phase)
-#docker-debug:
-#  stage: package-and-publish
-#  extends: .base-job
-#  script:
-#    - "env"
-#    - "ls -la /"
-#    - "echo pwd:$(pwd)"
-#    - "echo id:$(id)"
-#    - "ls -la /"
-#    - "find /build* -type f -ls"
+# Build a Docker image with CI/CD and push to the GitLab registry.
+# Docker-in-Docker documentation: https://docs.gitlab.com/ee/ci/docker/using_docker_build.html
+#
+# This template uses one generic job with conditional builds
+# for the default branch and all other (MR) branches.
